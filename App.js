@@ -1,12 +1,17 @@
-import React from 'react';
-import {View, Text} from 'react-native';
+import {createAppContainer, createSwitchNavigator} from 'react-navigation';
+import {createStackNavigator} from 'react-navigation-stack';
+import StartScreen from './src/screens/StartScreen';
+import AccountScreen from './src/screens/AccountScreen';
+import SignupScreen from './src/screens/SignupScreen';
 
-const App = () => {
-  return (
-    <View>
-      <Text>Hello</Text>
-    </View>
-  );
-};
+const switchNavigator = createSwitchNavigator({
+  InitFlow: createSwitchNavigator({
+    StartScreen,
+    AuthFlow: createStackNavigator({
+      AccountScreen,
+      SignupScreen,
+    }),
+  }),
+});
 
-export default App;
+export default createAppContainer(switchNavigator);
