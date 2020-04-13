@@ -1,12 +1,12 @@
 import {createAppContainer, createSwitchNavigator} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
-import StartScreen from './src/screens/StartScreen';
+import ResolveStartScreen from './src/screens/ResolveStartScreen';
 import AccountScreen from './src/screens/AccountScreen';
 import SignupScreen from './src/screens/SignupScreen';
 
 const switchNavigator = createSwitchNavigator({
   InitFlow: createSwitchNavigator({
-    StartScreen,
+    ResolveStartScreen,
     AuthFlow: createStackNavigator({
       AccountScreen,
       SignupScreen,
