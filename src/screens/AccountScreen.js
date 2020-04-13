@@ -1,10 +1,14 @@
 import React from 'react';
 import {View} from 'react-native';
-import {Text} from 'react-native-elements';
+import {Text, Button} from 'react-native-elements';
 
-const AccountScreen = () => (
+const AccountScreen = ({navigation}) => (
   <View>
     <Text>ACCOUNT SCREEN</Text>
+    <Button
+      title="Create Account"
+      onPress={() => navigation.navigate('SignupScreen')}
+    />
   </View>
 );
 

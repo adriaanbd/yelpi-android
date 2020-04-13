@@ -8,7 +8,12 @@ const switchNavigator = createSwitchNavigator({
   InitFlow: createSwitchNavigator({
     ResolveStartScreen,
     AuthFlow: createStackNavigator({
-      AccountScreen,
+      AccountScreen: {
+        screen: AccountScreen,
+        navigationOptions: {
+          header: () => null,
+        },
+      },
       SignupScreen,
     }),
   }),
