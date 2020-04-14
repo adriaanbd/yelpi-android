@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-const baseUrl = 'http://localhost:3000';
+const baseUrl = 'http://b53adfed.ngrok.io';
 
-export const sendRequest = async (path, method, data) => {
+export const sendRequest = async (method, path, data) => {
   const url = `${baseUrl}/${path}`;
   const res = await axios[method](url, data);
   return res;
