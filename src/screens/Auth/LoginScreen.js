@@ -1,13 +1,16 @@
 import React, {useState} from 'react';
 import {View} from 'react-native';
 import {Text, Input, Button} from 'react-native-elements';
+import {useDispatch} from 'react-redux';
+import {loginUser} from '../../store/thunks/user';
 
 const LoginScreen = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const dispatch = useDispatch();
 
   const handleLogin = () => {
-    console.log('LOGIN!');
+    dispatch(loginUser({email, password}));
   };
 
   return (
