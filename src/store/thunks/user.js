@@ -12,7 +12,12 @@ export const loginUser = loginData => {
       const userData = await res.data;
       await AsyncStorage.setItem('token', userData.token);
 
-      dispatch(setCurrentUser(userData.user));
+      dispatch(
+        setCurrentUser({
+          authenticated: true,
+          data: userData.user,
+        }),
+      );
       return navigate('HomeScreen');
     } catch (error) {
       return dispatch(setError(error.response.data.error));
