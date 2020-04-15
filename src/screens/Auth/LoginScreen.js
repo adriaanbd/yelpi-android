@@ -4,13 +4,14 @@ import {Text, Input, Button} from 'react-native-elements';
 import {useDispatch} from 'react-redux';
 import {loginUser} from '../../store/thunks/user';
 
-const LoginScreen = () => {
+const LoginScreen = ({navigation}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
 
   const handleLogin = () => {
     dispatch(loginUser({email, password}));
+    navigation.navigate('HomeScreen');
   };
 
   return (

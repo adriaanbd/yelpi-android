@@ -6,6 +6,7 @@ import AccountScreen from './src/screens/Auth/AccountScreen';
 import SignupScreen from './src/screens/Auth/SignupScreen';
 import LoginScreen from './src/screens/Auth/LoginScreen';
 import configureStore from './src/store/createStore';
+import HomeScreen from './src/screens/HomeScreen';
 
 const switchNavigator = createSwitchNavigator({
   InitFlow: createSwitchNavigator({
@@ -16,6 +17,7 @@ const switchNavigator = createSwitchNavigator({
       LoginScreen,
     }),
   }),
+  HomeScreen,
 });
 
 const store = configureStore();
