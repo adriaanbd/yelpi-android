@@ -1,5 +1,6 @@
 import AsyncStorage from '@react-native-community/async-storage';
 import {setCurrentUser} from '../actions/user';
+import {setError} from '../actions/error';
 import {sendRequest} from '../../utils/api';
 
 export const loginUser = loginData => {
@@ -18,8 +19,7 @@ export const loginUser = loginData => {
       );
       return res;
     } catch (error) {
-      console.log('ERROR', error);
-      return error;
+      return dispatch(setError(error.response.data.error));
     }
   };
 };
