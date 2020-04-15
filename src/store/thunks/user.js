@@ -36,13 +36,38 @@ export const signupUser = signupData => {
       dispatch(setCurrentUser(userData.user));
       return navigate('HomeScreen');
     } catch (error) {
+      const errorData = error.response.data;
       let errorMessage;
-      if (error.response.data.errors.email) {
-        errorMessage = `${error.response.data.message}. Email ${
-          error.response.data.errors.email[0]
+      if (errorData.errors.email) {
+        errorMessage = `${errorData.message}. Email ${
+          errorData.errors.email[0]
         }`;
+        return dispatch(setError(errorMessage));
+      } else if (errorData.errors.password) {
+        errorMessage = `${errorData.message}. Password ${
+          errorData.errors.password[0]
+        }`;
+        return dispatch(setError(errorMessage));
       }
-      return dispatch(setError(errorMessage));
+      return dispatch(setError(errorData.message));
+    }
+  };
+};
+
+export const logoutUser = () => {
+  return async dispatch => {
+    try {
+      await AsyncStorage.removeItem('token');
+      dispatch(
+        setCurrentUser({
+          authenticated: false,
+          data: null,
+        }),
+      );
+      return navigate('AccountScreen');
+    } catch (error) {
+      const errorData = error.response.data;
+      return dispatch(setError(errorData.message));
     }
   };
 };
