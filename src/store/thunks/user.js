@@ -32,12 +32,7 @@ export const signupUser = signupData => {
       const userData = await res.data;
       await AsyncStorage.setItem('token', userData.token);
 
-      dispatch(
-        setCurrentUser({
-          authenticated: true,
-          data: userData.user,
-        }),
-      );
+      dispatch(setCurrentUser(userData.user));
       return res;
     } catch (error) {
       console.log('ERROR', error);
