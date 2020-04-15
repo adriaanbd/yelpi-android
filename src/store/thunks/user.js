@@ -23,3 +23,25 @@ export const loginUser = loginData => {
     }
   };
 };
+
+export const signupUser = signupData => {
+  return async dispatch => {
+    const path = 'v1/users';
+    try {
+      const res = await sendRequest('post', path, {user: signupData});
+      const userData = await res.data;
+      await AsyncStorage.setItem('token', userData.token);
+
+      dispatch(
+        setCurrentUser({
+          authenticated: true,
+          data: userData.user,
+        }),
+      );
+      return res;
+    } catch (error) {
+      console.log('ERROR', error);
+      return error;
+    }
+  };
+};
