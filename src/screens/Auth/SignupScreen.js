@@ -4,7 +4,7 @@ import {Text, Input, Button} from 'react-native-elements';
 import {useDispatch} from 'react-redux';
 import {signupUser} from '../../store/thunks/user';
 
-const SignupScreen = ({navigation}) => {
+const SignupScreen = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [given_name, setGivenName] = useState('');
@@ -15,7 +15,6 @@ const SignupScreen = ({navigation}) => {
   const handleSignup = () => {
     const signupData = {email, password, given_name, last_name};
     dispatch(signupUser(signupData));
-    navigation.navigate('HomeScreen');
   };
 
   return (

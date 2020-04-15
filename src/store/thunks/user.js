@@ -2,6 +2,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 import {setCurrentUser} from '../actions/user';
 import {setError} from '../actions/error';
 import {sendRequest} from '../../utils/api';
+import {navigate} from '../../utils/navigationRef';
 
 export const loginUser = loginData => {
   return async dispatch => {
@@ -11,13 +12,8 @@ export const loginUser = loginData => {
       const userData = await res.data;
       await AsyncStorage.setItem('token', userData.token);
 
-      dispatch(
-        setCurrentUser({
-          authenticated: true,
-          data: userData.user,
-        }),
-      );
-      return res;
+      dispatch(setCurrentUser(userData.user));
+      return navigate('HomeScreen');
     } catch (error) {
       return dispatch(setError(error.response.data.error));
     }
@@ -33,10 +29,15 @@ export const signupUser = signupData => {
       await AsyncStorage.setItem('token', userData.token);
 
       dispatch(setCurrentUser(userData.user));
-      return res;
+      return navigate('HomeScreen');
     } catch (error) {
-      console.log('ERROR', error);
-      return error;
+      let errorMessage;
+      if (error.response.data.errors.email) {
+        errorMessage = `${error.response.data.message}. Email ${
+          error.response.data.errors.email[0]
+        }`;
+      }
+      return dispatch(setError(errorMessage));
     }
   };
 };

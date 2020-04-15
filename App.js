@@ -7,6 +7,7 @@ import SignupScreen from './src/screens/Auth/SignupScreen';
 import LoginScreen from './src/screens/Auth/LoginScreen';
 import configureStore from './src/store/createStore';
 import HomeScreen from './src/screens/HomeScreen';
+import {setNavigator} from './src/utils/navigationRef';
 
 const switchNavigator = createSwitchNavigator({
   InitFlow: createSwitchNavigator({
@@ -26,6 +27,6 @@ const App = createAppContainer(switchNavigator);
 
 export default () => (
   <Provider store={store}>
-    <App />
+    <App ref={navigator => setNavigator(navigator)} />
   </Provider>
 );

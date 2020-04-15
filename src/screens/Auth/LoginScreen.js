@@ -11,7 +11,7 @@ const LoginScreen = ({navigation}) => {
 
   const handleLogin = () => {
     dispatch(loginUser({email, password}));
-    navigation.navigate('HomeScreen');
+    // navigation.navigate('HomeScreen');
   };
 
   return (
