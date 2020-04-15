@@ -1,4 +1,4 @@
-import {AsyncStorage} from '@react-native-community/async-storage';
+import AsyncStorage from '@react-native-community/async-storage';
 import {setCurrentUser} from '../actions/user';
 import {sendRequest} from '../../utils/api';
 
@@ -9,6 +9,7 @@ export const loginUser = loginData => {
       const res = await sendRequest('post', path, loginData);
       const userData = await res.data;
       await AsyncStorage.setItem('token', userData.token);
+
       dispatch(
         setCurrentUser({
           authenticated: true,
@@ -17,6 +18,7 @@ export const loginUser = loginData => {
       );
       return res;
     } catch (error) {
+      console.log('ERROR', error);
       return error;
     }
   };
