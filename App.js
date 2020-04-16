@@ -7,11 +7,13 @@ import SignupScreen from './src/screens/Auth/SignupScreen';
 import LoginScreen from './src/screens/Auth/LoginScreen';
 import configureStore from './src/store/createStore';
 import HomeScreen from './src/screens/HomeScreen';
+import ResolveAuth from './src/screens/Resolvers/ResolveAuth';
 import {setNavigator} from './src/utils/navigationRef';
 
 const switchNavigator = createSwitchNavigator({
   InitFlow: createSwitchNavigator({
     // ResolveStartScreen, //disabled for dev purposes
+    ResolveAuth,
     AuthFlow: createSwitchNavigator({
       AccountScreen,
       SignupScreen,
