@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const baseUrl = 'http://9e20538d.ngrok.io'; // r
-// const baseUrl = 'http://b0e4e02e.ngrok.io'; // a
+// const baseUrl = 'http://9e20538d.ngrok.io'; // r
+const baseUrl = 'http://1493ed34.ngrok.io'; // a
 
 export const sendRequest = async (method, path, data) => {
   const url = `${baseUrl}/${path}`;
