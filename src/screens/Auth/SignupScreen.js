@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
-import {View} from 'react-native';
+import {View, TouchableOpacity} from 'react-native';
 import {Text, Input, Button} from 'react-native-elements';
 import {useDispatch} from 'react-redux';
 import {signupUser} from '../../store/thunks/user';
 
-const SignupScreen = () => {
+const SignupScreen = ({navigation}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [given_name, setGivenName] = useState('');
@@ -50,6 +50,9 @@ const SignupScreen = () => {
         autoCorrect={false}
       />
       <Button title="Signup" onPress={handleSignup} />
+      <TouchableOpacity onPress={() => navigation.navigate('AccountScreen')}>
+        <Text>Back</Text>
+      </TouchableOpacity>
     </View>
   );
 };
