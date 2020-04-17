@@ -3,13 +3,15 @@ import {Button} from 'react-native-elements';
 import {StyleSheet} from 'react-native';
 import {navigate} from '../utils/navigationRef';
 
-const SignupButton = () => {
+const SignupButton = ({bgColor}) => {
+  const backgroundColor = bgColor || '#245796';
   return (
     <Button
       title="CRIAR CONTA"
       onPress={() => navigate('SignupScreen')}
-      buttonStyle={styles.signup}
+      buttonStyle={{...styles.signup, backgroundColor}}
       titleStyle={styles.signupTitle}
+      containerStyle={styles.container}
     />
   );
 };
@@ -20,7 +22,6 @@ const styles = StyleSheet.create({
     width: 300,
     height: 58,
     marginBottom: 14,
-    backgroundColor: '#245796',
     borderColor: '#FFFFFF',
     borderStyle: 'solid',
     borderWidth: 3,
@@ -31,6 +32,9 @@ const styles = StyleSheet.create({
     lineHeight: 24,
     fontStyle: 'normal',
     fontFamily: 'Montserrat',
+  },
+  container: {
+    alignSelf: 'center',
   },
 });
 
