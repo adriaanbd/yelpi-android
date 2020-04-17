@@ -3,6 +3,7 @@ import {View} from 'react-native';
 import {Text, Input, Button} from 'react-native-elements';
 import {useDispatch} from 'react-redux';
 import {loginUser} from '../../store/thunks/user';
+import AuthBackButton from '../../components/AuthBackButton';
 
 const LoginScreen = ({navigation}) => {
   const [email, setEmail] = useState('');
@@ -32,6 +33,7 @@ const LoginScreen = ({navigation}) => {
         autoCorrect={false}
       />
       <Button title="Login" onPress={handleLogin} />
+      <AuthBackButton />
     </View>
   );
 };

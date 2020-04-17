@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
-import {View, TouchableOpacity, StyleSheet} from 'react-native';
+import {View} from 'react-native';
 import {Text, Input, Button} from 'react-native-elements';
 import {useDispatch} from 'react-redux';
 import {signupUser} from '../../store/thunks/user';
+import AuthBackButton from '../../components/AuthBackButton';
 
 const SignupScreen = ({navigation}) => {
   const [email, setEmail] = useState('');
@@ -50,20 +51,9 @@ const SignupScreen = ({navigation}) => {
         autoCorrect={false}
       />
       <Button title="Signup" onPress={handleSignup} />
-      <TouchableOpacity onPress={() => navigation.navigate('AccountScreen')}>
-        <Text style={styles.backButton}>Back</Text>
-      </TouchableOpacity>
+      <AuthBackButton />
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  backButton: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: 'blue',
-    alignSelf: 'center',
-  },
-});
 
 export default SignupScreen;
