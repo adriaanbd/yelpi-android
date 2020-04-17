@@ -2,8 +2,9 @@ import React from 'react';
 import {View, StyleSheet} from 'react-native';
 import {Text} from 'react-native-elements';
 import SocialLoginButton from './SocialLoginButton';
+import {navigate} from '../utils/navigationRef';
 
-const LoginContainer = ({navigation}) => {
+const LoginContainer = () => {
   return (
     <>
       <View style={styles.socialContainer}>
@@ -13,9 +14,7 @@ const LoginContainer = ({navigation}) => {
       <View style={styles.loginContainer}>
         <Text style={styles.cta}>
           <Text>Já tem conta?</Text>
-          <Text
-            style={styles.login}
-            onPress={() => navigation.navigate('LoginScreen')}>
+          <Text style={styles.login} onPress={() => navigate('LoginScreen')}>
             {' '}
             Logue aqui
           </Text>

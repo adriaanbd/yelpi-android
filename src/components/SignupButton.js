@@ -1,12 +1,13 @@
 import React from 'react';
 import {Button} from 'react-native-elements';
 import {StyleSheet} from 'react-native';
+import {navigate} from '../utils/navigationRef';
 
-const SignupButton = ({navigation}) => {
+const SignupButton = () => {
   return (
     <Button
       title="CRIAR CONTA"
-      onPress={() => navigation.navigate('SignupScreen')}
+      onPress={() => navigate('SignupScreen')}
       buttonStyle={styles.signup}
       titleStyle={styles.signupTitle}
     />
