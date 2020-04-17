@@ -2,28 +2,14 @@ import React from 'react';
 import {View, StyleSheet} from 'react-native';
 import {Text} from 'react-native-elements';
 import SignupButton from '../../components/SignupButton';
-import SocialLoginButton from '../../components/SocialLoginButton';
+import LoginContainer from '../../components/LoginContainer';
 
 const AccountScreen = ({navigation}) => (
   <View style={styles.container}>
     <Text style={styles.logo}>VERO</Text>
     <View style={styles.buttons}>
       <SignupButton navigation={navigation} />
-      <View style={styles.socialContainer}>
-        <SocialLoginButton name="Google+" />
-        <SocialLoginButton name="Facebook" />
-      </View>
-      <View style={styles.loginContainer}>
-        <Text style={styles.cta}>
-          <Text>Já tem conta?</Text>
-          <Text
-            style={styles.login}
-            onPress={() => navigation.navigate('LoginScreen')}>
-            {' '}
-            Logue aqui
-          </Text>
-        </Text>
-      </View>
+      <LoginContainer navigation={navigation} />
     </View>
   </View>
 );
@@ -45,19 +31,5 @@ const styles = StyleSheet.create({
   },
   buttons: {
     margin: 14,
-  },
-  socialContainer: {
-    flexDirection: 'row',
-  },
-  loginContainer: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-  },
-  cta: {
-    color: '#FFFFFF',
-    fontSize: 16,
-  },
-  login: {
-    color: '#FF8C00',
   },
 });
