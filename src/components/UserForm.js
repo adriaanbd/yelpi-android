@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {useDispatch} from 'react-redux';
 
 import {View, StyleSheet} from 'react-native';
@@ -13,11 +13,23 @@ const UserForm = () => {
   const [last_name, setLastName] = useState('');
 
   const dispatch = useDispatch();
+  let signupStyle = styles.signup;
+
+  useEffect(() => {
+    if (email && password && given_name && last_name) {
+      console.log('filled');
+      setBlueButton();
+    } else {
+      console.log('not filled');
+      setGreyButton();
+    }
+  }, [email, password, given_name, last_name]);
 
   const handleSignup = () => {
     const signupData = {email, password, given_name, last_name};
     dispatch(signupUser(signupData));
   };
+
   return (
     <View style={styles.container}>
       <View style={styles.titleBox}>
@@ -62,7 +74,7 @@ const UserForm = () => {
         <Button
           title="Signup"
           onPress={handleSignup}
-          buttonStyle={{...styles.signup}}
+          buttonStyle={signupStyle}
           titleStyle={styles.signupTitle}
           containerStyle={styles.container}
         />
@@ -71,7 +83,17 @@ const UserForm = () => {
   );
 };
 
-const styles = StyleSheet.create({
+const greyButton = {
+  borderColor: '#E5E5E5',
+  backgroundColor: '#E5E5E5',
+};
+
+const blueButton = {
+  backgroundColor: '#245796',
+  borderColor: '#245796',
+};
+
+let styles = StyleSheet.create({
   container: {
     alignItems: 'center',
     backgroundColor: 'white',
@@ -100,10 +122,9 @@ const styles = StyleSheet.create({
     width: 300,
     height: 58,
     marginBottom: 14,
-    borderColor: '#E5E5E5',
-    backgroundColor: '#E5E5E5',
     borderStyle: 'solid',
     borderWidth: 3,
+    ...greyButton,
   },
   signupTitle: {
     fontSize: 20,
@@ -113,5 +134,25 @@ const styles = StyleSheet.create({
     fontFamily: 'Montserrat',
   },
 });
+
+const setBlueButton = () => {
+  styles = {
+    ...styles,
+    signup: {
+      ...styles.signup,
+      ...blueButton,
+    },
+  };
+};
+
+const setGreyButton = () => {
+  styles = {
+    ...styles,
+    signup: {
+      ...styles.signup,
+      ...greyButton,
+    },
+  };
+};
 
 export default UserForm;
