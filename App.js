@@ -9,14 +9,28 @@ import configureStore from './src/store/createStore';
 import HomeScreen from './src/screens/HomeScreen';
 import ResolveAuth from './src/screens/Resolvers/ResolveAuth';
 import {setNavigator} from './src/utils/navigationRef';
+import {createStackNavigator} from 'react-navigation-stack';
 
 const switchNavigator = createSwitchNavigator({
   InitFlow: createSwitchNavigator({
     // ResolveStartScreen, //disabled for dev purposes
     ResolveAuth,
-    AuthFlow: createSwitchNavigator({
-      AccountScreen,
-      SignupScreen,
+    AuthFlow: createStackNavigator({
+      AccountScreen: {
+        screen: AccountScreen,
+        navigationOptions: {
+          header: () => null,
+        },
+      },
+      SignupScreen: {
+        screen: SignupScreen,
+        navigationOptions: {
+          headerTitle: () => null,
+          headerStyle: {
+            height: 32,
+          },
+        },
+      },
       LoginScreen,
     }),
   }),
