@@ -11,19 +11,16 @@ const UserForm = () => {
   const [password, setPassword] = useState('');
   const [given_name, setGivenName] = useState('');
   const [last_name, setLastName] = useState('');
+  const [allFilled, setAllFilled] = useState(false);
 
   const dispatch = useDispatch();
-  let signupStyle = styles.signup;
 
-  useEffect(() => {
+  const checkFilled = () => {
     if (email && password && given_name && last_name) {
-      console.log('filled');
-      setBlueButton();
-    } else {
-      console.log('not filled');
-      setGreyButton();
+      return setAllFilled(true);
     }
-  }, [email, password, given_name, last_name]);
+    return setAllFilled(false);
+  };
 
   const handleSignup = () => {
     const signupData = {email, password, given_name, last_name};
@@ -44,6 +41,7 @@ const UserForm = () => {
           onChangeText={setEmail}
           autoCapitalize="none"
           autoCorrect={false}
+          onSubmitEditing={checkFilled}
         />
         <Spacer />
         <Input
@@ -52,6 +50,7 @@ const UserForm = () => {
           onChangeText={setGivenName}
           autoCapitalize="none"
           autoCorrect={false}
+          onSubmitEditing={checkFilled}
         />
         <Spacer />
         <Input
@@ -60,6 +59,7 @@ const UserForm = () => {
           onChangeText={setLastName}
           autoCapitalize="none"
           autoCorrect={false}
+          onSubmitEditing={checkFilled}
         />
         <Spacer />
         <Input
@@ -69,12 +69,15 @@ const UserForm = () => {
           secureTextEntry
           autoCapitalize="none"
           autoCorrect={false}
+          onSubmitEditing={checkFilled}
         />
         <Spacer space={35} />
         <Button
           title="Signup"
           onPress={handleSignup}
-          buttonStyle={signupStyle}
+          buttonStyle={
+            allFilled ? {...styles.signup, ...blueButton} : styles.signup
+          }
           titleStyle={styles.signupTitle}
           containerStyle={styles.container}
         />
@@ -134,25 +137,5 @@ let styles = StyleSheet.create({
     fontFamily: 'Montserrat',
   },
 });
-
-const setBlueButton = () => {
-  styles = {
-    ...styles,
-    signup: {
-      ...styles.signup,
-      ...blueButton,
-    },
-  };
-};
-
-const setGreyButton = () => {
-  styles = {
-    ...styles,
-    signup: {
-      ...styles.signup,
-      ...greyButton,
-    },
-  };
-};
 
 export default UserForm;
