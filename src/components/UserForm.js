@@ -2,8 +2,9 @@ import React, {useState} from 'react';
 import {useDispatch} from 'react-redux';
 
 import {View, StyleSheet} from 'react-native';
-import {Text, Input, Button} from 'react-native-elements';
+import {Input, Button} from 'react-native-elements';
 import Spacer from './Spacer';
+import FormTitle from './FormTitle';
 import {signupUser} from '../store/thunks/user';
 
 const UserForm = () => {
@@ -29,10 +30,7 @@ const UserForm = () => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.titleBox}>
-        <Text style={styles.title}>Criar novo</Text>
-        <Text style={{...styles.title, ...styles.container}}>Conta</Text>
-      </View>
+      <FormTitle title1="Criar nova" title2="conta" />
       <View style={styles.formBox}>
         <Spacer space={50} />
         <Input
@@ -100,20 +98,6 @@ let styles = StyleSheet.create({
   container: {
     alignItems: 'center',
     backgroundColor: 'white',
-  },
-  titleBox: {
-    marginTop: 29,
-    paddingHorizontal: 94,
-    alignItems: 'center',
-  },
-  title: {
-    fontSize: 45,
-    lineHeight: 55,
-    color: '#245796',
-    fontFamily: 'Montserrat',
-  },
-  conta: {
-    fontWeight: 'bold',
   },
   formBox: {
     height: '100%',
