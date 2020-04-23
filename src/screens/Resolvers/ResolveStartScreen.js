@@ -4,7 +4,7 @@ import StartScreen from '../Common/StartScreen';
 const ResolveStartScreen = ({navigation}) => {
   useEffect(() => {
     setTimeout(() => {
-      navigation.navigate('AuthFlow');
+      navigation.navigate('ResolveAuth');
     }, 3000);
   }, []);
 
