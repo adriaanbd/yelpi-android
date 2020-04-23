@@ -31,7 +31,15 @@ const switchNavigator = createSwitchNavigator({
           },
         },
       },
-      LoginScreen,
+      LoginScreen: {
+        screen: LoginScreen,
+        navigationOptions: {
+          headerTitle: () => null,
+          headerStyle: {
+            height: 32,
+          },
+        },
+      },
     }),
   }),
   HomeScreen,

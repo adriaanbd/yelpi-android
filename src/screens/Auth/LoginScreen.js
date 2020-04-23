@@ -1,39 +1,11 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {View} from 'react-native';
-import {Text, Input, Button} from 'react-native-elements';
-import {useDispatch} from 'react-redux';
-import {loginUser} from '../../store/thunks/user';
-import AuthBackButton from '../../components/AuthBackButton';
+import LoginForm from '../../components/LoginForm';
 
-const LoginScreen = ({navigation}) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const dispatch = useDispatch();
-
-  const handleLogin = () => {
-    dispatch(loginUser({email, password}));
-  };
-
+const LoginScreen = () => {
   return (
     <View>
-      <Text>LOGIN SCREEN</Text>
-      <Input
-        placeholder="Email"
-        value={email}
-        onChangeText={setEmail}
-        autoCapitalize="none"
-        autoCorrect={false}
-      />
-      <Input
-        placeholder="Password"
-        value={password}
-        onChangeText={setPassword}
-        secureTextEntry
-        autoCapitalize="none"
-        autoCorrect={false}
-      />
-      <Button title="Login" onPress={handleLogin} />
-      <AuthBackButton />
+      <LoginForm />
     </View>
   );
 };

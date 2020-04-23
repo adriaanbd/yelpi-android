@@ -4,57 +4,36 @@ import {useDispatch} from 'react-redux';
 import {View, StyleSheet} from 'react-native';
 import {Input, Button} from 'react-native-elements';
 import Spacer from './Spacer';
+import {loginUser} from '../store/thunks/user';
 import FormTitle from './FormTitle';
-import {signupUser} from '../store/thunks/user';
 
-const UserForm = () => {
+const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [given_name, setGivenName] = useState('');
-  const [last_name, setLastName] = useState('');
   const [allFilled, setAllFilled] = useState(false);
 
   const dispatch = useDispatch();
 
+  const handleLogin = () => {
+    dispatch(loginUser({email, password}));
+  };
+
   const checkFilled = () => {
-    if (email && password && given_name && last_name) {
+    if (email && password) {
       return setAllFilled(true);
     }
     return setAllFilled(false);
   };
 
-  const handleSignup = () => {
-    const signupData = {email, password, given_name, last_name};
-    dispatch(signupUser(signupData));
-  };
-
   return (
     <View style={styles.container}>
-      <FormTitle title1="Criar nova" title2="conta" />
+      <FormTitle title1="Logar na sua" title2="Conta" />
       <View style={styles.formBox}>
-        <Spacer space={50} />
+        <Spacer space={80} />
         <Input
           placeholder="Email"
           value={email}
           onChangeText={setEmail}
-          autoCapitalize="none"
-          autoCorrect={false}
-          onSubmitEditing={checkFilled}
-        />
-        <Spacer />
-        <Input
-          placeholder="Given Name"
-          value={given_name}
-          onChangeText={setGivenName}
-          autoCapitalize="none"
-          autoCorrect={false}
-          onSubmitEditing={checkFilled}
-        />
-        <Spacer />
-        <Input
-          placeholder="Last Name"
-          value={last_name}
-          onChangeText={setLastName}
           autoCapitalize="none"
           autoCorrect={false}
           onSubmitEditing={checkFilled}
@@ -69,15 +48,15 @@ const UserForm = () => {
           autoCorrect={false}
           onSubmitEditing={checkFilled}
         />
-        <Spacer space={35} />
+        <Spacer space={95} />
         <Button
-          title="Signup"
-          onPress={handleSignup}
-          buttonStyle={
-            allFilled ? {...styles.signup, ...blueButton} : styles.signup
-          }
-          titleStyle={styles.signupTitle}
+          title="Login"
+          onPress={handleLogin}
+          titleStyle={styles.loginTitle}
           containerStyle={styles.container}
+          buttonStyle={
+            allFilled ? {...styles.login, ...blueButton} : styles.login
+          }
         />
       </View>
     </View>
@@ -94,7 +73,7 @@ const blueButton = {
   borderColor: '#245796',
 };
 
-let styles = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
     backgroundColor: 'white',
@@ -104,7 +83,7 @@ let styles = StyleSheet.create({
     width: '100%',
     paddingHorizontal: 40,
   },
-  signup: {
+  login: {
     borderRadius: 38,
     width: 300,
     height: 58,
@@ -113,7 +92,7 @@ let styles = StyleSheet.create({
     borderWidth: 3,
     ...greyButton,
   },
-  signupTitle: {
+  loginTitle: {
     fontSize: 20,
     fontWeight: 'bold',
     lineHeight: 24,
@@ -122,4 +101,4 @@ let styles = StyleSheet.create({
   },
 });
 
-export default UserForm;
+export default LoginForm;
