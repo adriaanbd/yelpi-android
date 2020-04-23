@@ -1,7 +1,7 @@
 import AsyncStorage from '@react-native-community/async-storage';
 import {setCurrentUser} from '../actions/user';
 import {setError} from '../actions/error';
-import {sendRequest} from '../../utils/api';
+import {sendRequest, sendAuthorizedRequest} from '../../utils/api';
 import {navigate} from '../../utils/navigationRef';
 
 export const loginUser = loginData => {
@@ -52,6 +52,23 @@ export const signupUser = signupData => {
       return dispatch(setError(errorData.message));
     }
   };
+};
+
+export const fetchUserData = id => async dispatch => {
+  const path = `v1/users/${id}`;
+  const token = await AsyncStorage.getItem('token');
+  try {
+    const res = await sendAuthorizedRequest('get', path, token);
+
+    return dispatch(
+      setCurrentUser({
+        authenticated: true,
+        data: res.data.user,
+      }),
+    );
+  } catch (err) {
+    return dispatch(setError(err.response.data.message));
+  }
 };
 
 export const logoutUser = () => {
