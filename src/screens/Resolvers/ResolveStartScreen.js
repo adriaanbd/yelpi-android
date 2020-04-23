@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import StartScreen from './StartScreen';
+import StartScreen from '../Common/StartScreen';
 
 const ResolveStartScreen = ({navigation}) => {
   useEffect(() => {

@@ -1,7 +1,7 @@
 import React from 'react';
 import {createAppContainer, createSwitchNavigator} from 'react-navigation';
 import {Provider} from 'react-redux';
-// import ResolveStartScreen from './src/screens/Auth/ResolveStartScreen';
+import ResolveStartScreen from './src/screens/Resolvers/ResolveStartScreen';
 import AccountScreen from './src/screens/Auth/AccountScreen';
 import SignupScreen from './src/screens/Auth/SignupScreen';
 import LoginScreen from './src/screens/Auth/LoginScreen';
@@ -13,7 +13,7 @@ import {createStackNavigator} from 'react-navigation-stack';
 
 const switchNavigator = createSwitchNavigator({
   InitFlow: createSwitchNavigator({
-    // ResolveStartScreen, //disabled for dev purposes
+    ResolveStartScreen,
     ResolveAuth,
     AuthFlow: createStackNavigator({
       AccountScreen: {
