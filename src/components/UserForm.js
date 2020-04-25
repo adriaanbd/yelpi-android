@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {useDispatch} from 'react-redux';
 
 import {View, StyleSheet} from 'react-native';
@@ -6,6 +6,7 @@ import {Input, Button} from 'react-native-elements';
 import Spacer from './Spacer';
 import FormTitle from './FormTitle';
 import {signupUser} from '../store/thunks/user';
+import {setError} from '../store/actions/error';
 
 const UserForm = () => {
   const [email, setEmail] = useState('');
@@ -15,6 +16,8 @@ const UserForm = () => {
   const [allFilled, setAllFilled] = useState(false);
 
   const dispatch = useDispatch();
+
+  useEffect(() => () => dispatch(setError(null)), []);
 
   const checkFilled = () => {
     if (email && password && given_name && last_name) {

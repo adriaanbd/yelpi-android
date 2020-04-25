@@ -18,6 +18,7 @@ export const loginUser = loginData => {
           data: userData.user,
         }),
       );
+      dispatch(setError(null));
       return navigate('HomeScreen');
     } catch (error) {
       return dispatch(setError(error.response.data.error));
@@ -34,6 +35,7 @@ export const signupUser = signupData => {
       await AsyncStorage.setItem('token', userData.token);
 
       dispatch(setCurrentUser(userData.user));
+      dispatch(setError(null));
       return navigate('HomeScreen');
     } catch (error) {
       const errorData = error.response.data;

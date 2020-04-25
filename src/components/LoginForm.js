@@ -1,10 +1,11 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {useDispatch} from 'react-redux';
 
 import {View, StyleSheet} from 'react-native';
 import {Input, Button} from 'react-native-elements';
 import Spacer from './Spacer';
 import {loginUser} from '../store/thunks/user';
+import {setError} from '../store/actions/error';
 import FormTitle from './FormTitle';
 
 const LoginForm = () => {
@@ -13,6 +14,8 @@ const LoginForm = () => {
   const [allFilled, setAllFilled] = useState(false);
 
   const dispatch = useDispatch();
+
+  useEffect(() => () => dispatch(setError(null)), []);
 
   const handleLogin = () => {
     dispatch(loginUser({email, password}));
