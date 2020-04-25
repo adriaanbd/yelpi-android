@@ -36,7 +36,7 @@ export const signupUser = signupData => {
 
       dispatch(setCurrentUser(userData.user));
       dispatch(setError(null));
-      return navigate('HomeScreen');
+      return navigate('ResolveStartScreen');
     } catch (error) {
       const errorData = error.response.data;
       let errorMessage;
