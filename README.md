@@ -80,7 +80,7 @@ There are no tests at the moment; however, they will be added later.
 
 Contributions, issues and feature requests are welcome.
 
-Feel free to check the issues page [here](https://github.com/yelpi-android/blob/master/issues).
+Feel free to check the issues page [here](https://github.com/adriaanbd/yelpi-android/issues).
 
 ## Acknowledgements
 
