@@ -1,12 +1,21 @@
 import React from 'react';
 import {View, StyleSheet} from 'react-native';
 import {Text} from 'react-native-elements';
+import {useSelector} from 'react-redux';
 
-const StartScreen = () => (
-  <View style={styles.container}>
-    <Text style={styles.title}>SPLASH SCREEN</Text>
-  </View>
-);
+const SplashScreen = () => {
+  const currentUser = useSelector(state => state.currentUser.authenticated);
+  console.log('here is the user', currentUser);
+  return (
+    <View style={styles.container}>
+      {currentUser ? (
+        <Text style={styles.title}>SUCCESS SCREEN</Text>
+      ) : (
+        <Text style={styles.title}>SPLASH SCREEN</Text>
+      )}
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -25,4 +34,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default StartScreen;
+export default SplashScreen;
