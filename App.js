@@ -41,9 +41,14 @@ const switchNavigator = createSwitchNavigator({
           },
         },
       },
+      SuccessScreen: {
+        screen: SuccessScreen,
+        navigationOptions: {
+          header: () => null,
+        },
+      },
     }),
   }),
-  SuccessScreen,
   HomeScreen,
 });
 
