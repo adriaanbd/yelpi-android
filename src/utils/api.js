@@ -1,7 +1,6 @@
 import axios from 'axios';
 
-// const baseUrl = 'http://9e20538d.ngrok.io'; // r
-const baseUrl = 'http://776d2cd6.ngrok.io'; // a
+const baseUrl = 'https://mighty-ocean-68056.herokuapp.com';
 
 export const sendRequest = async (method, path, data) => {
   const url = `${baseUrl}/${path}`;
