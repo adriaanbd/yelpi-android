@@ -5,6 +5,7 @@ import ResolveStartScreen from './src/screens/Resolvers/ResolveStartScreen';
 import AccountScreen from './src/screens/Auth/AccountScreen';
 import SignupScreen from './src/screens/Auth/SignupScreen';
 import LoginScreen from './src/screens/Auth/LoginScreen';
+import SuccessScreen from './src/screens/Auth/SuccessScreen';
 import configureStore from './src/store/createStore';
 import HomeScreen from './src/screens/HomeScreen';
 import ResolveAuth from './src/screens/Resolvers/ResolveAuth';
@@ -42,6 +43,7 @@ const switchNavigator = createSwitchNavigator({
       },
     }),
   }),
+  SuccessScreen,
   HomeScreen,
 });
 

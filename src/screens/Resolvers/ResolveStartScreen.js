@@ -1,10 +1,11 @@
 import React, {useEffect} from 'react';
 import StartScreen from '../Common/StartScreen';
+import {navigate} from '../../utils/navigationRef';
 
-const ResolveStartScreen = ({navigation}) => {
+const ResolveStartScreen = () => {
   useEffect(() => {
     setTimeout(() => {
-      navigation.navigate('ResolveAuth');
+      navigate('ResolveAuth');
     }, 3000);
   }, []);
 

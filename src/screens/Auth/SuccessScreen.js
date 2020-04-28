@@ -1,12 +1,21 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {View, StyleSheet} from 'react-native';
 import {Text} from 'react-native-elements';
+import {navigate} from '../../utils/navigationRef';
 
-const StartScreen = () => (
-  <View style={styles.container}>
-    <Text style={styles.title}>SPLASH SCREEN</Text>
-  </View>
-);
+const SuccessScreen = () => {
+  useEffect(() => {
+    setTimeout(() => {
+      navigate('HomeScreen');
+    }, 3000);
+  }, []);
+
+  return (
+    <View style={styles.container}>
+      <Text style={styles.title}>ACCOUNT CREATED SUCCESSFULLY!</Text>
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -25,4 +34,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default StartScreen;
+export default SuccessScreen;
