@@ -36,7 +36,9 @@ const AddNewPatient = () => {
       component = 'Slider Component';
       break;
     default:
-      component = <TextInput type="Name Component" />;
+      component = (
+        <TextInput type="Name Component" next="age" setField={setField} />
+      );
   }
 
   return <View>{component}</View>;

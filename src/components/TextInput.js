@@ -7,7 +7,7 @@ const TextInput = ({type, next, setField}) => {
     <View>
       <Button title="Back" />
       <Text>{type}</Text>
-      <Button title="Next" onPress={() => console.log(setField)} />
+      <Button title="Next" onPress={() => setField(next)} />
     </View>
   );
 };
