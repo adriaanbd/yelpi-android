@@ -8,7 +8,12 @@ const AddNewPatient = () => {
   switch (field) {
     case 'age':
       component = (
-        <TextInput type="Name Component" next="gender" setField={setField} />
+        <TextInput
+          type="Age Component"
+          prev="name"
+          next="gender"
+          setField={setField}
+        />
       );
       break;
     case 'gender':
@@ -37,7 +42,12 @@ const AddNewPatient = () => {
       break;
     default:
       component = (
-        <TextInput type="Name Component" next="age" setField={setField} />
+        <TextInput
+          type="Name Component"
+          prev={null}
+          next="age"
+          setField={setField}
+        />
       );
   }
 
