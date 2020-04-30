@@ -1,6 +1,6 @@
 import React from 'react';
 import {View} from 'react-native';
-import AddNewPatient from '../components/AddNewPatient';
+import AddNewPatient from '../components/AddPatient/AddNewPatient';
 
 const AddNewPatientScreen = () => (
   <View>

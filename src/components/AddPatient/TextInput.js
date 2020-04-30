@@ -1,6 +1,6 @@
 import React from 'react';
-import {View, Text} from 'react-native';
-import {Button} from 'react-native-elements';
+import {View} from 'react-native';
+import {Button, Text} from 'react-native-elements';
 
 const TextInput = ({type, prev, next, setField}) => {
   return (
