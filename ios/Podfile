@@ -79,6 +79,8 @@ target 'helpandroid' do
 
   pod 'RNCAsyncStorage', :path => '../node_modules/@react-native-community/async-storage'
 
+  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
+
   target 'helpandroidTests' do
     inherit! :complete
     # Pods for testing
