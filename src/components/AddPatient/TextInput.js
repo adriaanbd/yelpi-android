@@ -1,13 +1,18 @@
 import React from 'react';
 import {View} from 'react-native';
-import {Button, Text} from 'react-native-elements';
+import {Button, Text, Input} from 'react-native-elements';
+import {useDispatch} from 'react-redux';
+import { setNextField } from '../../store/actions/field';
 
 const TextInput = ({type, prev, next, setField}) => {
+  const dispatch = useDispatch();
   return (
     <View>
       {prev ? <Button title="Back" onPress={() => setField(prev)} /> : null}
-      <Text>{type}</Text>
-      <Button title="Next" onPress={() => setField(next)} />
+      <Input
+        placeholder={type}
+      />
+      <Button title="Next" onPress={() => dispatch(setNextField())} />
     </View>
   );
 };
