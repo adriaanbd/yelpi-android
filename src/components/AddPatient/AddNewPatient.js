@@ -2,7 +2,7 @@ import React from 'react';
 import {View} from 'react-native';
 import TextInput from './TextInput';
 import GenderInput from './GenderInput';
-import SelectInput from './SelectInput';
+import RelationshipInput from './RelationshipInput';
 import SliderInput from './SliderInput';
 import {useSelector} from 'react-redux';
 
@@ -17,10 +17,10 @@ const AddNewPatient = () => {
       component = <GenderInput type="Sexo" />;
       break;
     case 'relationship':
-      component = <SelectInput type="Relationship" />;
+      component = <RelationshipInput type="Parentesco" />;
       break;
     case 'physicians':
-      // component = <CheckboxInput type="Physicians" />;
+      component = <GenderInput type="Physicians" />;
       break;
     case 'weight':
       component = <TextInput type="Weight" />;
