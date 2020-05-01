@@ -14,7 +14,7 @@ const TextInput = ({type}) => {
     dispatch(setPreviousField());
   };
 
-  const handleNext = data => {
+  const handleNext = () => {
     const patientData = {};
     patientData[field] = text;
     dispatch(setNextField());
@@ -38,7 +38,7 @@ const TextInput = ({type}) => {
           <Icon
             name="caretright"
             type="antdesign"
-            onPress={() => handleNext(text)}
+            onPress={() => handleNext()}
           />
         }
         onChangeText={setText}

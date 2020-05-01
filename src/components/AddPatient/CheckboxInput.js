@@ -1,13 +1,52 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View} from 'react-native';
-import {Text, Button} from 'react-native-elements';
+import {CheckBox, Icon} from 'react-native-elements';
+import {useDispatch, useSelector} from 'react-redux';
+import {setNextField, setPreviousField} from '../../store/actions/field';
+import {setPatientData} from '../../store/actions/patient';
 
-const CheckboxInput = ({type, prev, next, setField}) => {
+const CheckboxInput = ({type}) => {
+  const {field} = useSelector(state => state);
+  const [male, setMale] = useState(false);
+  const [female, setFemale] = useState(false);
+  const [gender, setGender] = useState('');
+  const dispatch = useDispatch();
+
+  const handlePrevious = () => {
+    dispatch(setPreviousField());
+  };
+
+  const handleNext = () => {
+    const patientData = {};
+    patientData[field] = gender;
+    dispatch(setNextField());
+    dispatch(setPatientData(patientData));
+  };
+
+  const handleMale = () => {
+    setMale(!male);
+    setGender('male');
+  };
+
+  const handleFemale = () => {
+    setFemale(!female);
+    setGender('female');
+  };
+
   return (
-    <View>
-      {prev ? <Button title="Back" onPress={() => setField(prev)} /> : null}
-      <Text>{type}</Text>
-      <Button title="Next" onPress={() => setField(next)} />
+    <View style={{flexDirection: 'row'}}>
+      <Icon
+        name="caretleft"
+        type="antdesign"
+        onPress={() => handlePrevious()}
+      />
+      <CheckBox title="Male" checked={male} onPress={() => handleMale()} />
+      <CheckBox
+        title="Female"
+        checked={female}
+        onPress={() => handleFemale()}
+      />
+      <Icon name="caretright" type="antdesign" onPress={() => handleNext()} />
     </View>
   );
 };
