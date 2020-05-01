@@ -5,7 +5,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {setNextField, setPreviousField} from '../../store/actions/field';
 import {setPatientData} from '../../store/actions/patient';
 
-const CheckboxInput = ({type}) => {
+const GenderInput = ({type}) => {
   const {field} = useSelector(state => state);
   const [male, setMale] = useState(false);
   const [female, setFemale] = useState(false);
@@ -25,12 +25,14 @@ const CheckboxInput = ({type}) => {
 
   const handleMale = () => {
     setMale(!male);
-    setGender('male');
+    if (female) setFemale(false);
+    male ? setGender('') : setGender('male');
   };
 
   const handleFemale = () => {
     setFemale(!female);
-    setGender('female');
+    if (male) setMale(false);
+    female ? setGender('') : setGender('female');
   };
 
   return (
@@ -51,4 +53,4 @@ const CheckboxInput = ({type}) => {
   );
 };
 
-export default CheckboxInput;
+export default GenderInput;
