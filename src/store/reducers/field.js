@@ -9,6 +9,7 @@ const fields = [
   'weight',
   'mentalState',
   'mentalHealth',
+  'physicalHealth',
   'locomotion',
   'generalHealth',
 ];
