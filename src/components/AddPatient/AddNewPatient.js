@@ -1,51 +1,22 @@
 import React from 'react';
-import {View} from 'react-native';
-import TextInput from './TextInput';
-import GenderInput from './GenderInput';
-import RelationshipInput from './RelationshipInput';
-import PhysiciansInput from './PhysiciansInput';
-import SliderInput from './SliderInput';
-import {useSelector} from 'react-redux';
+import {View, StyleSheet} from 'react-native';
+import InputSwitch from './InputSwitch';
+import FormTitle from '../Common/FormTitle';
 
 const AddNewPatient = () => {
-  const {field} = useSelector(state => state);
-  let component;
-  switch (field) {
-    case 'age':
-      component = <TextInput type="Idade" />;
-      break;
-    case 'gender':
-      component = <GenderInput type="Sexo" />;
-      break;
-    case 'relationship':
-      component = <RelationshipInput type="Parentesco" />;
-      break;
-    case 'physicians':
-      component = <PhysiciansInput type="Physicians" />;
-      break;
-    case 'weight':
-      component = <TextInput type="Weight" />;
-      break;
-    case 'mentalState':
-      component = <SliderInput type="Mental State" />;
-      break;
-    case 'mentalHealth':
-      component = <SliderInput type="Mental Health" />;
-      break;
-    case 'physicalHealth':
-      component = <SliderInput type="Physical Health" />;
-      break;
-    case 'locomotion':
-      component = <SliderInput type="Locomotion" />;
-      break;
-    case 'generalHealth':
-      component = <SliderInput type="General Health" tail={true} />;
-      break;
-    default:
-      component = <TextInput type="Nome" />;
-  }
-
-  return <View>{component}</View>;
+  return (
+    <View style={styles.container}>
+      <FormTitle title1="Criar novo" title2="Paciente" />
+      <InputSwitch />
+    </View>
+  );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    height: '100%',
+    width: '100%',
+  },
+});
 
 export default AddNewPatient;
