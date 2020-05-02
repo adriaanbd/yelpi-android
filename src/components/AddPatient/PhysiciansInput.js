@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {View} from 'react-native';
 import {Icon, CheckBox} from 'react-native-elements';
 import {useDispatch, useSelector} from 'react-redux';
@@ -44,19 +44,25 @@ const PhysiciansInput = ({type}) => {
     ['Outros', outros, setOutros],
   ];
 
-  let physiciansArray = [];
+  useEffect(() => {
+    setPhysicians(
+      physicianTypes.filter(arr => arr[1] === true).map(arr => arr[0]),
+    );
+  }, [
+    cardiologista,
+    neurologista,
+    ortopedista,
+    oftalmologista,
+    endocrinologista,
+    oncologista,
+    geriatra,
+    clinicoGeral,
+    outros,
+  ]);
 
   const handleCheck = phys => {
-    const [typeOfPhys, isChecked, toggleCheck] = phys;
+    const [isChecked, toggleCheck] = phys;
     toggleCheck(!isChecked);
-    if (isChecked) {
-      physiciansArray = [...physiciansArray, typeOfPhys];
-    } else {
-      physiciansArray = physiciansArray.filter(
-        physician => physician !== typeOfPhys,
-      );
-    }
-    console.log('Physicians Array:', physiciansArray);
   };
 
   return (
@@ -71,7 +77,7 @@ const PhysiciansInput = ({type}) => {
           <CheckBox
             title={phys[0]}
             key={i}
-            onPress={() => handleCheck(phys)}
+            onPress={() => handleCheck([phys[1], phys[2]])}
             checked={phys[1]}
           />
         ))}
