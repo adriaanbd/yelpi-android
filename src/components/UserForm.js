@@ -4,7 +4,7 @@ import {useDispatch} from 'react-redux';
 import {View, StyleSheet} from 'react-native';
 import {Input, Button} from 'react-native-elements';
 import Spacer from './Spacer';
-import FormTitle from './FormTitle';
+import FormTitle from './Common/FormTitle';
 import {signupUser} from '../store/thunks/user';
 import {setError} from '../store/actions/error';
 

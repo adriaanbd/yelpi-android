@@ -6,7 +6,7 @@ import {Input, Button} from 'react-native-elements';
 import Spacer from './Spacer';
 import {loginUser} from '../store/thunks/user';
 import {setError} from '../store/actions/error';
-import FormTitle from './FormTitle';
+import FormTitle from './Common/FormTitle';
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');
