@@ -27,7 +27,7 @@ const PhysiciansInput = ({type}) => {
 
   const handleNext = () => {
     const patientData = {};
-    patientData[field] = physicians.filter(p => p);
+    patientData[field] = physicians;
     dispatch(setNextField());
     dispatch(setPatientData(patientData));
   };
