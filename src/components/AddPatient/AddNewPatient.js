@@ -3,6 +3,7 @@ import {View} from 'react-native';
 import TextInput from './TextInput';
 import GenderInput from './GenderInput';
 import RelationshipInput from './RelationshipInput';
+import PhysiciansInput from './PhysiciansInput';
 import SliderInput from './SliderInput';
 import {useSelector} from 'react-redux';
 
@@ -20,7 +21,7 @@ const AddNewPatient = () => {
       component = <RelationshipInput type="Parentesco" />;
       break;
     case 'physicians':
-      component = <GenderInput type="Physicians" />;
+      component = <PhysiciansInput type="Physicians" />;
       break;
     case 'weight':
       component = <TextInput type="Weight" />;

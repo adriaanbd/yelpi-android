@@ -25,13 +25,17 @@ const GenderInput = ({type}) => {
 
   const handleMale = () => {
     setMale(!male);
-    if (female) setFemale(false);
+    if (female) {
+      setFemale(false);
+    }
     male ? setGender('') : setGender('male');
   };
 
   const handleFemale = () => {
     setFemale(!female);
-    if (male) setMale(false);
+    if (male) {
+      setMale(false);
+    }
     female ? setGender('') : setGender('female');
   };
 
