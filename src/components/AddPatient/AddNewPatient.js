@@ -6,6 +6,8 @@ import RelationshipInput from './RelationshipInput';
 import PhysiciansInput from './PhysiciansInput';
 import SliderInput from './SliderInput';
 import {useSelector} from 'react-redux';
+import MentalState from './MentalState';
+import MentalHealth from './MentalHealth';
 
 const AddNewPatient = () => {
   const {field} = useSelector(state => state);
@@ -27,16 +29,16 @@ const AddNewPatient = () => {
       component = <TextInput type="Weight" />;
       break;
     case 'mentalState':
-      // component = <CheckboxInput type="Mental State" />;
+      component = <MentalState type="Mental State" />;
       break;
     case 'mentalHealth':
-      component = <SliderInput type="Mental Health" />;
+      component = <MentalHealth type="Mental Health" />;
       break;
     case 'locomotion':
-      component = <SliderInput type="Locomotion" />;
+      component = <Locomotion type="Locomotion" />;
       break;
     case 'generalHealth':
-      component = <SliderInput type="General Health" />;
+      component = <GeneralHealth type="General Health" />;
       break;
     default:
       component = <TextInput type="Nome" />;
