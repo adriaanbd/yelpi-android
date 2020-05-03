@@ -4,7 +4,6 @@ import {useDispatch, useSelector} from 'react-redux';
 import {setNextField, setPreviousField} from '../../store/actions/field';
 import {setPatientData} from '../../store/actions/patient';
 import InputLayout from './InputLayout';
-import {View} from 'react-native';
 
 const TextInput = ({type}) => {
   const {field} = useSelector(state => state);
@@ -27,9 +26,17 @@ const TextInput = ({type}) => {
       prev={handlePrev}
       next={handleNext}
       left={field === 'name' ? false : true}>
-      <Input placeholder={type} onChangeText={setText} />
+      <Input
+        placeholder={type}
+        onChangeText={setText}
+        inputContainerStyle={inputContainerStyle}
+        inputStyle={inputStyle}
+      />
     </InputLayout>
   );
 };
+
+const inputStyle = {textAlign: 'center'};
+const inputContainerStyle = {borderColor: '#245796'};
 
 export default TextInput;
