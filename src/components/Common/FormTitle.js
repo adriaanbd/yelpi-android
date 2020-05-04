@@ -13,8 +13,6 @@ const FormTitle = ({title1, title2}) => {
 
 const styles = StyleSheet.create({
   titleBox: {
-    marginTop: 29,
-    paddingHorizontal: 50,
     alignItems: 'center',
   },
   title: {

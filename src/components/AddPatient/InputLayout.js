@@ -2,11 +2,14 @@ import React from 'react';
 import {Icon} from 'react-native-elements';
 import {View} from 'react-native';
 import {StyleSheet} from 'react-native';
+import {useSelector} from 'react-redux';
 
-const InputLayout = ({children, prev, next, left}) => {
+const InputLayout = ({children, prev, next}) => {
+  const {field} = useSelector(state => state);
+  const isName = field === 'name';
   return (
     <View style={styles.container}>
-      {left ? (
+      {!isName ? (
         <Icon
           name="caretleft"
           type="antdesign"
@@ -16,7 +19,7 @@ const InputLayout = ({children, prev, next, left}) => {
       ) : (
         <View style={styles.emptyView} />
       )}
-      {children}
+      <View style={styles.childrenContainer}>{children}</View>
       <Icon
         name="caretright"
         type="antdesign"
@@ -30,13 +33,18 @@ const InputLayout = ({children, prev, next, left}) => {
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    paddingHorizontal: 40,
+    alignItems: 'center',
   },
   emptyView: {
     width: 24,
   },
   iconColor: {
     color: '#245796',
+  },
+  childrenContainer: {
+    width: 335,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 

@@ -1,9 +1,10 @@
 import React, {useState} from 'react';
-import {View} from 'react-native';
-import {CheckBox, Icon} from 'react-native-elements';
+import {View, StyleSheet} from 'react-native';
+import {CheckBox, Icon, Text} from 'react-native-elements';
 import {useDispatch, useSelector} from 'react-redux';
 import {setNextField, setPreviousField} from '../../store/actions/field';
 import {setPatientData} from '../../store/actions/patient';
+import InputLayout from './InputLayout';
 
 const GenderInput = ({type}) => {
   const {field} = useSelector(state => state);
@@ -12,7 +13,7 @@ const GenderInput = ({type}) => {
   const [gender, setGender] = useState('');
   const dispatch = useDispatch();
 
-  const handlePrevious = () => {
+  const handlePrev = () => {
     dispatch(setPreviousField());
   };
 
@@ -40,21 +41,47 @@ const GenderInput = ({type}) => {
   };
 
   return (
-    <View style={{flexDirection: 'row'}}>
-      <Icon
-        name="caretleft"
-        type="antdesign"
-        onPress={() => handlePrevious()}
-      />
-      <CheckBox title="Male" checked={male} onPress={() => handleMale()} />
-      <CheckBox
-        title="Female"
-        checked={female}
-        onPress={() => handleFemale()}
-      />
-      <Icon name="caretright" type="antdesign" onPress={() => handleNext()} />
-    </View>
+    <InputLayout prev={handlePrev} next={handleNext}>
+      <Text style={styles.title}>Sexo</Text>
+      <View style={styles.genderContainer}>
+        <CheckBox
+          title="Masculino"
+          checked={male}
+          onPress={handleMale}
+          containerStyle={borderWidth}
+          checkedColor={blue}
+        />
+        <CheckBox
+          title="Femenino"
+          checked={female}
+          onPress={handleFemale}
+          containerStyle={borderWidth}
+          checkedColor={blue}
+        />
+      </View>
+    </InputLayout>
   );
+};
+
+const blue = '#245796';
+
+const styles = StyleSheet.create({
+  genderContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
+  title: {
+    textAlign: 'center',
+    fontSize: 30,
+    color: blue,
+    fontWeight: 'bold',
+    fontFamily: 'Montserrat',
+    lineHeight: 37,
+  },
+});
+
+const borderWidth = {
+  borderWidth: 0,
 };
 
 export default GenderInput;

@@ -22,10 +22,7 @@ const TextInput = ({type}) => {
   };
 
   return (
-    <InputLayout
-      prev={handlePrev}
-      next={handleNext}
-      left={field === 'name' ? false : true}>
+    <InputLayout prev={handlePrev} next={handleNext}>
       <Input
         placeholder={type}
         onChangeText={setText}
