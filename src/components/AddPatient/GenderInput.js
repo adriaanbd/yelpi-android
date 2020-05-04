@@ -5,6 +5,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {setNextField, setPreviousField} from '../../store/actions/field';
 import {setPatientData} from '../../store/actions/patient';
 import InputLayout from './InputLayout';
+import FormSubTitle from '../Common/FormSubTitle';
 
 const GenderInput = ({type}) => {
   const {field} = useSelector(state => state);
@@ -42,13 +43,13 @@ const GenderInput = ({type}) => {
 
   return (
     <InputLayout prev={handlePrev} next={handleNext}>
-      <Text style={styles.title}>Sexo</Text>
+      <FormSubTitle title1="Sexo" />
       <View style={styles.genderContainer}>
         <CheckBox
           title="Masculino"
           checked={male}
           onPress={handleMale}
-          containerStyle={borderWidth}
+          containerStyle={checkboxStyle}
           checkedIcon="square"
           checkedColor={blue}
         />
@@ -67,18 +68,17 @@ const GenderInput = ({type}) => {
 
 const blue = '#245796';
 
+const checkboxStyle = {
+  paddingVertical: 0,
+  marginVertical: 0,
+  borderWidth: 0,
+};
+
 const styles = StyleSheet.create({
   genderContainer: {
+    marginTop: -50, // hack fix
     flexDirection: 'row',
-    justifyContent: 'center',
-  },
-  title: {
-    textAlign: 'center',
-    fontSize: 30,
-    color: blue,
-    fontWeight: 'bold',
-    fontFamily: 'Montserrat',
-    lineHeight: 37,
+    alignItems: 'center',
   },
 });
 

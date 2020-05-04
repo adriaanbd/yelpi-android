@@ -5,6 +5,7 @@ import FormTitle from '../Common/FormTitle';
 import StatusBar from './StatusBar';
 import {Icon} from 'react-native-elements';
 import {navigate} from '../../utils/navigationRef';
+import Spacer from '../Spacer';
 
 const AddNewPatient = () => {
   return (
@@ -32,7 +33,6 @@ const styles = StyleSheet.create({
   },
   lowerContainer: {
     justifyContent: 'space-evenly',
-    alignItems: 'center',
     height: '80%',
   },
 });

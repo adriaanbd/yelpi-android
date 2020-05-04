@@ -1,17 +1,17 @@
 import React, {useState} from 'react';
-import {View} from 'react-native';
-import {Icon} from 'react-native-elements';
 import Slider from '@react-native-community/slider';
 import {useDispatch, useSelector} from 'react-redux';
 import {setNextField, setPreviousField} from '../../store/actions/field';
 import {setPatientData} from '../../store/actions/patient';
+import InputLayout from './InputLayout';
+import {StyleSheet} from 'react-native';
 
 const SliderInput = ({type, tail}) => {
   const {field} = useSelector(state => state);
   const [sliderValue, setSliderValue] = useState(50);
   const dispatch = useDispatch();
 
-  const handlePrevious = () => {
+  const handlePrev = () => {
     dispatch(setPreviousField());
   };
 
@@ -26,14 +26,9 @@ const SliderInput = ({type, tail}) => {
   };
 
   return (
-    <View style={{flexDirection: 'row'}}>
-      <Icon
-        name="caretleft"
-        type="antdesign"
-        onPress={() => handlePrevious()}
-      />
+    <InputLayout prev={handlePrev} next={handleNext}>
       <Slider
-        style={{width: 200, height: 40}}
+        style={styles.slider}
         minimumValue={0}
         maximumValue={100}
         minimumTrackTintColor="#000000"
@@ -41,9 +36,15 @@ const SliderInput = ({type, tail}) => {
         value={sliderValue}
         onValueChange={setSliderValue}
       />
-      <Icon name="caretright" type="antdesign" onPress={() => handleNext()} />
-    </View>
+    </InputLayout>
   );
 };
+
+const styles = StyleSheet.create({
+  slider: {
+    width: '100%',
+    height: 40,
+  },
+});
 
 export default SliderInput;

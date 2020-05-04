@@ -43,7 +43,6 @@ const styles = StyleSheet.create({
   },
   childrenContainer: {
     width: 335,
-    justifyContent: 'center',
     alignItems: 'center',
   },
 });
