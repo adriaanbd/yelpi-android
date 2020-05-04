@@ -2,6 +2,8 @@ import React from 'react';
 import {StyleSheet, View} from 'react-native';
 import {Text} from 'react-native-elements';
 
+import {blue, fontFamily} from './commonStyles';
+
 const FormSubTitle = ({title1, title2}) => {
   return (
     <View style={styles.container}>
@@ -13,12 +15,11 @@ const FormSubTitle = ({title1, title2}) => {
 
 export default FormSubTitle;
 
-const blue = '#245796';
-
 const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',
     alignItems: 'center',
+    // paddingTop: -40,
   },
   primary: {
     fontWeight: 'bold',
@@ -27,7 +28,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 30,
     color: blue,
-    fontFamily: 'Montserrat',
+    fontFamily: fontFamily,
     lineHeight: 37,
   },
 });

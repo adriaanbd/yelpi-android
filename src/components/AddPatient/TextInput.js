@@ -5,6 +5,8 @@ import {setNextField, setPreviousField} from '../../store/actions/field';
 import {setPatientData} from '../../store/actions/patient';
 import InputLayout from './InputLayout';
 
+import {blue} from '../Common/commonStyles';
+
 const TextInput = ({type}) => {
   const {field} = useSelector(state => state);
   const [text, setText] = useState('');
@@ -34,6 +36,6 @@ const TextInput = ({type}) => {
 };
 
 const inputStyle = {textAlign: 'center'};
-const inputContainerStyle = {borderColor: '#245796'};
+const inputContainerStyle = {borderColor: blue};
 
 export default TextInput;

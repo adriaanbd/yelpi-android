@@ -1,13 +1,19 @@
 import React, {useState} from 'react';
 import {View, StyleSheet} from 'react-native';
-import {CheckBox, Icon, Text} from 'react-native-elements';
+import {CheckBox} from 'react-native-elements';
 import {useDispatch, useSelector} from 'react-redux';
 import {setNextField, setPreviousField} from '../../store/actions/field';
 import {setPatientData} from '../../store/actions/patient';
 import InputLayout from './InputLayout';
 import FormSubTitle from '../Common/FormSubTitle';
 
-const GenderInput = ({type}) => {
+import {
+  checkboxContainerStyle,
+  checkboxTextStyle,
+  blue,
+} from '../Common/commonStyles';
+
+const GenderInput = () => {
   const {field} = useSelector(state => state);
   const [male, setMale] = useState(false);
   const [female, setFemale] = useState(false);
@@ -49,7 +55,8 @@ const GenderInput = ({type}) => {
           title="Masculino"
           checked={male}
           onPress={handleMale}
-          containerStyle={checkboxStyle}
+          containerStyle={checkboxContainerStyle}
+          textStyle={checkboxTextStyle}
           checkedIcon="square"
           checkedColor={blue}
         />
@@ -57,7 +64,8 @@ const GenderInput = ({type}) => {
           title="Femenino"
           checked={female}
           onPress={handleFemale}
-          containerStyle={borderWidth}
+          containerStyle={checkboxContainerStyle}
+          textStyle={checkboxTextStyle}
           checkedIcon="square"
           checkedColor={blue}
         />
@@ -66,24 +74,12 @@ const GenderInput = ({type}) => {
   );
 };
 
-const blue = '#245796';
-
-const checkboxStyle = {
-  paddingVertical: 0,
-  marginVertical: 0,
-  borderWidth: 0,
-};
-
 const styles = StyleSheet.create({
   genderContainer: {
-    marginTop: -50, // hack fix
+    marginTop: -35, // hack fix
     flexDirection: 'row',
     alignItems: 'center',
   },
 });
-
-const borderWidth = {
-  borderWidth: 0,
-};
 
 export default GenderInput;
