@@ -1,11 +1,17 @@
 import React, {useState, useEffect} from 'react';
 import {View, StyleSheet} from 'react-native';
-import {Icon, CheckBox} from 'react-native-elements';
+import {CheckBox} from 'react-native-elements';
 import {useDispatch, useSelector} from 'react-redux';
 import {setNextField, setPreviousField} from '../../store/actions/field';
 import {setPatientData} from '../../store/actions/patient';
 import InputLayout from './InputLayout';
 import FormSubTitle from '../Common/FormSubTitle';
+
+import {
+  checkboxContainerStyle,
+  checkboxTextStyle,
+  blue,
+} from '../Common/commonStyles';
 
 const PhysiciansInput = ({type}) => {
   const [cardiologista, setCardiologista] = useState(false);
@@ -68,7 +74,10 @@ const PhysiciansInput = ({type}) => {
   };
 
   return (
-    <InputLayout prev={handlePrev} next={handleNext}>
+    <InputLayout
+      prev={handlePrev}
+      next={handleNext}
+      extraStyle={{marginTop: -50}}>
       <FormSubTitle title1="Especialidades" title2=" que frequenta" />
       <View style={styles.container}>
         {physicianTypes.map((phys, i) => (
@@ -77,10 +86,10 @@ const PhysiciansInput = ({type}) => {
             key={i}
             onPress={() => handleCheck([phys[1], phys[2]])}
             checked={phys[1]}
-            containerStyle={checkboxStyle}
+            containerStyle={checkboxContainerStyle}
             checkedIcon="square"
             checkedColor={blue}
-            textStyle={textStyle}
+            textStyle={checkboxTextStyle}
           />
         ))}
       </View>
@@ -93,19 +102,5 @@ const styles = StyleSheet.create({
     marginTop: 14,
   },
 });
-const blue = '#245796';
-const checkboxStyle = {
-  paddingVertical: 0,
-  marginVertical: 1,
-  borderWidth: 0,
-};
-const textStyle = {
-  fontSize: 20,
-  fontWeight: '300',
-  color: blue,
-  fontStyle: 'normal',
-  fontFamily: 'Montserrat',
-  lineHeight: 24,
-};
 
 export default PhysiciansInput;

@@ -4,11 +4,13 @@ import {View} from 'react-native';
 import {StyleSheet} from 'react-native';
 import {useSelector} from 'react-redux';
 
-const InputLayout = ({children, prev, next}) => {
+import {blue} from '../Common/commonStyles';
+
+const InputLayout = ({children, prev, next, extraStyle}) => {
   const {field} = useSelector(state => state);
   const isName = field === 'name';
   return (
-    <View style={styles.container}>
+    <View style={{...styles.container, ...extraStyle}}>
       {!isName ? (
         <Icon
           name="caretleft"
@@ -39,7 +41,7 @@ const styles = StyleSheet.create({
     width: 24,
   },
   iconColor: {
-    color: '#245796',
+    color: blue,
   },
   childrenContainer: {
     width: 335,
