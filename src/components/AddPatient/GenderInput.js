@@ -49,6 +49,7 @@ const GenderInput = ({type}) => {
           checked={male}
           onPress={handleMale}
           containerStyle={borderWidth}
+          checkedIcon="square"
           checkedColor={blue}
         />
         <CheckBox
@@ -56,6 +57,7 @@ const GenderInput = ({type}) => {
           checked={female}
           onPress={handleFemale}
           containerStyle={borderWidth}
+          checkedIcon="square"
           checkedColor={blue}
         />
       </View>
