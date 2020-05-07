@@ -25,7 +25,7 @@ const InputSwitch = () => {
       component = <PhysiciansInput type="Physicians" />;
       break;
     case 'weight':
-      component = <TextInput type="Weight" />;
+      component = <TextInput type="Peso atual Kg" />;
       break;
     case 'mentalState':
       component = <SliderInput type="Mental State" />;

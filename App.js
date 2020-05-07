@@ -10,6 +10,7 @@ import configureStore from './src/store/createStore';
 import HomeScreen from './src/screens/HomeScreen';
 import ResolveAuth from './src/screens/Resolvers/ResolveAuth';
 import AddNewPatientScreen from './src/screens/AddNewPatientScreen';
+import PatientFormScreen from './src/screens/PatientFormScreen';
 import {setNavigator} from './src/utils/navigationRef';
 import {createStackNavigator} from 'react-navigation-stack';
 
@@ -52,6 +53,7 @@ const switchNavigator = createSwitchNavigator({
   }),
   HomeScreen,
   AddNewPatientScreen,
+  PatientFormScreen,
 });
 
 const store = configureStore();

@@ -5,6 +5,7 @@ import {setNextField, setPreviousField} from '../../store/actions/field';
 import {setPatientData} from '../../store/actions/patient';
 import InputLayout from './InputLayout';
 import {StyleSheet} from 'react-native';
+import {navigate} from '../../utils/navigationRef';
 
 const SliderInput = ({type, tail}) => {
   const {field} = useSelector(state => state);
@@ -20,6 +21,7 @@ const SliderInput = ({type, tail}) => {
     patientData[field] = sliderValue;
     dispatch(setPatientData(patientData));
     if (tail) {
+      navigate('PatientFormScreen');
     } else {
       dispatch(setNextField());
     }
