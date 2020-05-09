@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
 import {View, StyleSheet, TouchableOpacity} from 'react-native';
 import {Input, Button} from 'react-native-elements';
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
 import Spacer from '../Spacer';
+import {setPatientData} from '../../store/actions/patient';
 
 const PatientForm = () => {
   const {patient} = useSelector(state => state);
@@ -17,20 +18,35 @@ const PatientForm = () => {
   const [locomotion, setLocomotion] = useState('');
   const [generalHealth, setGeneralHealth] = useState('');
 
+  const dispatch = useDispatch();
+
   return (
     <View style={styles.container}>
       <TouchableOpacity>
-        <Input placeholder={patient.name} value={name} onChangeText={setName} />
+        <Input
+          placeholder={patient.name}
+          value={name}
+          onChangeText={setName}
+          onSubmitEditing={() => dispatch(setPatientData({...patient, name}))}
+        />
       </TouchableOpacity>
       <View style={styles.twoCols}>
         <TouchableOpacity style={styles.halfCol}>
-          <Input placeholder={patient.age} value={age} onChangeText={setAge} />
+          <Input
+            placeholder={patient.age}
+            value={age}
+            onChangeText={setAge}
+            onSubmitEditing={() => dispatch(setPatientData({...patient, age}))}
+          />
         </TouchableOpacity>
         <TouchableOpacity style={styles.halfCol}>
           <Input
             placeholder={patient.weight}
             value={weight}
             onChangeText={setWeight}
+            onSubmitEditing={() =>
+              dispatch(setPatientData({...patient, weight}))
+            }
           />
         </TouchableOpacity>
       </View>
