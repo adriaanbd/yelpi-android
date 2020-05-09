@@ -3,7 +3,15 @@ import {View, StyleSheet, TouchableOpacity} from 'react-native';
 import {Input, Button} from 'react-native-elements';
 import {useSelector, useDispatch} from 'react-redux';
 import Spacer from '../Spacer';
+<<<<<<< Updated upstream
 import {setPatientData} from '../../store/actions/patient';
+=======
+<<<<<<< HEAD
+import {createPatient} from '../../store/thunks/patient';
+=======
+import {setPatientData} from '../../store/actions/patient';
+>>>>>>> 55623b6ac6fabdc6984392b536506f1cbc9607dd
+>>>>>>> Stashed changes
 
 const PatientForm = () => {
   const {patient} = useSelector(state => state);
@@ -102,7 +110,10 @@ const PatientForm = () => {
         />
       </TouchableOpacity>
       <Spacer />
-      <Button title="CONFIRMAR" onPress={() => console.log('SUBMIT FORM')} />
+      <Button
+        title="CONFIRMAR"
+        onPress={() => dispatch(createPatient(patient))}
+      />
     </View>
   );
 };
