@@ -4,6 +4,7 @@ import GenderInput from './GenderInput';
 import RelationshipInput from './RelationshipInput';
 import PhysiciansInput from './PhysiciansInput';
 import SliderInput from './SliderInput';
+import MentalState from './MentalState';
 import {useSelector} from 'react-redux';
 
 const InputSwitch = () => {
@@ -28,7 +29,7 @@ const InputSwitch = () => {
       component = <TextInput type="Peso atual Kg" />;
       break;
     case 'mentalState':
-      component = <SliderInput type="Mental State" />;
+      component = <MentalState type="Mental State" />;
       break;
     case 'mentalHealth':
       component = <SliderInput type="Mental Health" />;

@@ -1,18 +1,30 @@
 import React, {useState} from 'react';
-import {View} from 'react-native';
-import {CheckBox, Icon} from 'react-native-elements';
+import {View, StyleSheet} from 'react-native';
+import {CheckBox} from 'react-native-elements';
 import {useDispatch, useSelector} from 'react-redux';
 import {setNextField, setPreviousField} from '../../store/actions/field';
 import {setPatientData} from '../../store/actions/patient';
 
-const MentalState = ({type}) => {
-  const {field} = useSelector(state => state);
+import {
+  checkboxContainerStyle,
+  checkboxTextStyle,
+  blue,
+} from '../Common/commonStyles';
+import FormSubTitle from '../Common/FormSubTitle';
+import InputLayout from './InputLayout';
+
+const titleCase = str => `${str[0].toUpperCase()}${str.slice(1)}`;
+
+const MentalState = () => {
+  const {field, patient} = useSelector(state => state);
   const [lucid, setLucid] = useState(false);
   const [senil, setSenil] = useState(false);
   const [mentalState, setMentalState] = useState('');
   const dispatch = useDispatch();
 
-  const handlePrevious = () => {
+  const patientFirstName = titleCase(patient.name.split(' ')[0].toLowerCase());
+
+  const handlePrev = () => {
     dispatch(setPreviousField());
   };
 
@@ -40,17 +52,38 @@ const MentalState = ({type}) => {
   };
 
   return (
-    <View style={{flexDirection: 'row'}}>
-      <Icon
-        name="caretleft"
-        type="antdesign"
-        onPress={() => handlePrevious()}
-      />
-      <CheckBox title="Lúcido" checked={lucid} onPress={() => handleLucid()} />
-      <CheckBox title="Senil" checked={senil} onPress={() => handleSenil()} />
-      <Icon name="caretright" type="antdesign" onPress={() => handleNext()} />
-    </View>
+    <InputLayout prev={handlePrev} next={handleNext}>
+      <FormSubTitle title1={`A ${patientFirstName} está`} />
+      <View style={styles.genderContainer}>
+        <CheckBox
+          title="Lúcido"
+          checked={lucid}
+          onPress={handleLucid}
+          containerStyle={checkboxContainerStyle}
+          textStyle={checkboxTextStyle}
+          checkedIcon="square"
+          checkedColor={blue}
+        />
+        <CheckBox
+          title="Senil"
+          checked={senil}
+          onPress={handleSenil}
+          containerStyle={checkboxContainerStyle}
+          textStyle={checkboxTextStyle}
+          checkedIcon="square"
+          checkedColor={blue}
+        />
+      </View>
+    </InputLayout>
   );
 };
+
+const styles = StyleSheet.create({
+  genderContainer: {
+    marginTop: -35, // hack fix
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+});
 
 export default MentalState;
