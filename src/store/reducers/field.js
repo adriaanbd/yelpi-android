@@ -1,8 +1,8 @@
 import {SET_PREV_FIELD, SET_NEXT_FIELD} from '../actions/types';
 
 const fields = [
-  'givenName',
-  'lastName',
+  'nome',
+  'sobrenome',
   'birthdate',
   'gender',
   'relationship',
@@ -15,7 +15,7 @@ const fields = [
   'generalHealth',
 ];
 
-export default (state = 'givenName', action) => {
+export default (state = 'nome', action) => {
   const {type} = action;
   let index;
   switch (type) {

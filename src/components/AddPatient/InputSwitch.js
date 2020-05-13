@@ -5,6 +5,7 @@ import RelationshipInput from './RelationshipInput';
 import PhysiciansInput from './PhysiciansInput';
 import SliderInput from './SliderInput';
 import MentalState from './MentalState';
+import BirthDate from './BirthDate';
 import {useSelector} from 'react-redux';
 
 const InputSwitch = () => {
@@ -16,8 +17,8 @@ const InputSwitch = () => {
     case 'sobrenome':
       component = <TextInput type="Sobrenome" />;
       break;
-    case 'age':
-      component = <TextInput type="Data de nascimento" />;
+    case 'birthdate':
+      component = <BirthDate type="Data de nascimento" />;
       break;
     case 'gender':
       component = <GenderInput type="Sexo" />;
