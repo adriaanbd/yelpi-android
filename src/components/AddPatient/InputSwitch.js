@@ -13,8 +13,11 @@ const InputSwitch = () => {
   let component;
 
   switch (field) {
+    case 'sobrenome':
+      component = <TextInput type="Sobrenome" />;
+      break;
     case 'age':
-      component = <TextInput type="Idade" />;
+      component = <TextInput type="Data de nascimento" />;
       break;
     case 'gender':
       component = <GenderInput type="Sexo" />;

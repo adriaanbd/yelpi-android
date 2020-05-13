@@ -1,8 +1,9 @@
 import {SET_PREV_FIELD, SET_NEXT_FIELD} from '../actions/types';
 
 const fields = [
-  'name',
-  'age',
+  'givenName',
+  'lastName',
+  'birthdate',
   'gender',
   'relationship',
   'physicians',
