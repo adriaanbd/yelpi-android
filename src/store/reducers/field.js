@@ -15,7 +15,7 @@ const fields = [
   'generalHealth',
 ];
 
-export default (state = 'name', action) => {
+export default (state = 'givenName', action) => {
   const {type} = action;
   let index;
   switch (type) {
