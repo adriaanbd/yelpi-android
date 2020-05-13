@@ -15,7 +15,7 @@ const BirthDate = () => {
   const [show, setShow] = useState(false);
   const dispatch = useDispatch();
 
-  const onChange = selectedDate => {
+  const onChange = (e, selectedDate) => {
     const currentDate = selectedDate || date;
     setShow(Platform.OS === 'ios');
     setDate(currentDate);
