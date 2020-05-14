@@ -6,8 +6,10 @@ import {setNextField, setPreviousField} from '../../store/actions/field';
 import {setPatientData} from '../../store/actions/patient';
 import InputLayout from './InputLayout';
 
+const titleCase = str => `${str[0].toUpperCase()}${str.slice(1)}`;
+
 const RelationshipInput = ({type}) => {
-  const {name} = useSelector(state => state.patient);
+  const {nome} = useSelector(state => state.patient);
   const [relationship, setRelationship] = useState('');
   const {field} = useSelector(state => state);
   const dispatch = useDispatch();
@@ -23,11 +25,10 @@ const RelationshipInput = ({type}) => {
     dispatch(setPatientData(patientData));
   };
 
-  const firstName = name.split(' ')[0];
   const relValues = [
-    `O ${firstName} é meu pai`,
-    `O ${firstName} é meu irmao`,
-    `O ${firstName} sou eu`,
+    `O ${titleCase(nome)} é meu pai`,
+    `O ${titleCase(nome)} é meu irmao`,
+    `O ${titleCase(nome)} sou eu`,
   ];
 
   return (

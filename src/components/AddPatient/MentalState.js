@@ -16,13 +16,12 @@ import InputLayout from './InputLayout';
 const titleCase = str => `${str[0].toUpperCase()}${str.slice(1)}`;
 
 const MentalState = () => {
-  const {field, patient} = useSelector(state => state);
+  const {field} = useSelector(state => state);
+  const {nome} = useSelector(state => state.patient);
   const [lucid, setLucid] = useState(false);
   const [senil, setSenil] = useState(false);
   const [mentalState, setMentalState] = useState('');
   const dispatch = useDispatch();
-
-  const patientFirstName = titleCase(patient.name.split(' ')[0].toLowerCase());
 
   const handlePrev = () => {
     dispatch(setPreviousField());
@@ -53,7 +52,7 @@ const MentalState = () => {
 
   return (
     <InputLayout prev={handlePrev} next={handleNext}>
-      <FormSubTitle title1={`A ${patientFirstName} está`} />
+      <FormSubTitle title1={`A ${titleCase(nome)} está`} />
       <View style={styles.genderContainer}>
         <CheckBox
           title="Lúcido"
