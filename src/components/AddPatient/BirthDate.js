@@ -1,12 +1,10 @@
 import React, {useState} from 'react';
 import InputLayout from './InputLayout';
-// import DateTimePicker from '@react-native-community/datetimepicker';
 import DatePicker from 'react-native-datepicker';
 import {setNextField, setPreviousField} from '../../store/actions/field';
 import {setPatientData} from '../../store/actions/patient';
 import {useSelector, useDispatch} from 'react-redux';
 import {blue} from '../Common/commonStyles';
-import {StyleSheet} from 'react-native';
 
 const BirthDate = ({type}) => {
   const {field} = useSelector(state => state);
