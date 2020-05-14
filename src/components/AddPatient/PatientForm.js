@@ -9,6 +9,7 @@ import {createPatient} from '../../store/thunks/patient';
 const PatientForm = () => {
   const {patient} = useSelector(state => state);
   const [name, setName] = useState('');
+  const [lastname, setLastName] = useState('');
   const [age, setAge] = useState('');
   const [weight, setWeight] = useState('');
   const [gender, setGender] = useState('');
@@ -23,18 +24,28 @@ const PatientForm = () => {
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity>
-        <Input
-          placeholder={patient.name}
-          value={name}
-          onChangeText={setName}
-          onSubmitEditing={() => dispatch(setPatientData({...patient, name}))}
-        />
-      </TouchableOpacity>
       <View style={styles.twoCols}>
         <TouchableOpacity style={styles.halfCol}>
           <Input
-            placeholder={patient.age}
+            placeholder={patient.nome}
+            value={name}
+            onChangeText={setName}
+            onSubmitEditing={() => dispatch(setPatientData({...patient, name}))}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.halfCol}>
+          <Input
+            placeholder={patient.sobrenome}
+            value={lastname}
+            onChangeText={setLastName}
+            onSubmitEditing={() => dispatch(setPatientData({...patient, name}))}
+          />
+        </TouchableOpacity>
+      </View>
+      <View style={styles.twoCols}>
+        <TouchableOpacity style={styles.halfCol}>
+          <Input
+            placeholder={patient.birthdate}
             value={age}
             onChangeText={setAge}
             onSubmitEditing={() => dispatch(setPatientData({...patient, age}))}
