@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import moment from 'moment';
 import InputLayout from './InputLayout';
 import DatePicker from 'react-native-datepicker';
 import {setNextField, setPreviousField} from '../../store/actions/field';
@@ -7,8 +8,10 @@ import {useSelector, useDispatch} from 'react-redux';
 import {blue} from '../Common/commonStyles';
 
 const BirthDate = ({type}) => {
-  const {field} = useSelector(state => state);
-  const [date, setDate] = useState(new Date());
+  const {field, patient} = useSelector(state => state);
+  const [date, setDate] = useState(
+    patient.birthdate || moment(new Date()).format('DD MMMM YYYY'),
+  );
   const dispatch = useDispatch();
 
   const handlePrev = () => {
@@ -28,7 +31,7 @@ const BirthDate = ({type}) => {
         style={dateContainerStyle}
         placeholder={type}
         format="DD MMMM YYYY"
-        date={date}
+        date={moment(date)}
         mode="date"
         confirmBtnText="Confirm"
         cancelBtnText="Cancel"
