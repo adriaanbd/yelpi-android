@@ -1,30 +1,17 @@
 import React, {useState} from 'react';
 import InputLayout from './InputLayout';
-import DateTimePicker from '@react-native-community/datetimepicker';
+// import DateTimePicker from '@react-native-community/datetimepicker';
+import DatePicker from 'react-native-datepicker';
 import {setNextField, setPreviousField} from '../../store/actions/field';
 import {setPatientData} from '../../store/actions/patient';
 import {useSelector, useDispatch} from 'react-redux';
-import {TouchableOpacity, View, Platform} from 'react-native';
-import TextInput from './TextInput';
-import moment from 'moment';
-import {Button} from 'react-native-elements';
+import {blue} from '../Common/commonStyles';
+import {StyleSheet} from 'react-native';
 
-const BirthDate = () => {
+const BirthDate = ({type}) => {
   const {field} = useSelector(state => state);
-  const [date, setDate] = useState(new Date(1598051730000));
-  const [show, setShow] = useState(false);
+  const [date, setDate] = useState(new Date());
   const dispatch = useDispatch();
-
-  const onChange = (e, selectedDate) => {
-    const currentDate = selectedDate || date;
-    setShow(Platform.OS === 'ios');
-    setDate(currentDate);
-  };
-
-  const showDatePicker = () => {
-    setShow('date');
-    setShow(true);
-  };
 
   const handlePrev = () => {
     dispatch(setPreviousField());
@@ -38,32 +25,36 @@ const BirthDate = () => {
   };
 
   return (
-    // <InputLayout prev={handlePrev} next={handleNext}>
-    <View>
-      <View>
-        <Button onPress={showDatePicker} title="Show date" />
-      </View>
-      <View>
-        {/* <TouchableOpacity onPress={showDatePicker}>
-          <TextInput
-            label="Label"
-            placeholder={moment(date).format('MMMM DD, YYYY')}
-            disabled
-            onChangeText={() => {}}
-            value=""
-          />
-        </TouchableOpacity> */}
-        {show && (
-          <DateTimePicker
-            testID="birthdate"
-            value={date}
-            mode="date"
-            onChange={onChange}
-          />
-        )}
-      </View>
-    </View>
+    <InputLayout prev={handlePrev} next={handleNext}>
+      <DatePicker
+        style={dateContainerStyle}
+        placeholder={type}
+        format="DD MMMM YYYY"
+        date={date}
+        mode="date"
+        confirmBtnText="Confirm"
+        cancelBtnText="Cancel"
+        showIcon={false}
+        customStyles={dateStyles}
+        onDateChange={d => setDate(d)}
+      />
+    </InputLayout>
   );
+};
+
+const dateStyles = {
+  dateInput: {
+    marginLeft: 0,
+    borderWidth: 0,
+  },
+  dateText: {
+    fontSize: 21,
+    color: blue,
+  },
+};
+
+const dateContainerStyle = {
+  width: '100%',
 };
 
 export default BirthDate;
