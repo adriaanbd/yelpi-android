@@ -10,7 +10,7 @@ export const createPatient = patientData => {
     console.log(token);
     try {
       const res = await sendAuthorizedRequest('post', path, token, {
-        patient: {...patientData, birthdate: '01-01-1985'},
+        patient: patientData,
       });
       // dispatch(setError(null));
       console.log(res);
