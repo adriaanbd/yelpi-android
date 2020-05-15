@@ -44,6 +44,7 @@ const styles = StyleSheet.create({
     color: blue,
   },
   childrenContainer: {
+    // flexDirection: 'column',
     width: 335,
     alignItems: 'center',
   },

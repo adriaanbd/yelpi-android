@@ -8,7 +8,7 @@ const FormSubTitle = ({title1, title2}) => {
   return (
     <View style={styles.container}>
       <Text style={{...styles.title, ...styles.primary}}>{title1}</Text>
-      <Text style={styles.title}>{title2}</Text>
+      {title2 ? <Text style={styles.title}>{title2}</Text> : null}
     </View>
   );
 };
@@ -19,7 +19,6 @@ const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',
     alignItems: 'center',
-    // paddingTop: -40,
   },
   primary: {
     fontWeight: 'bold',

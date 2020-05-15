@@ -79,7 +79,6 @@ const MentalState = () => {
 
 const styles = StyleSheet.create({
   genderContainer: {
-    marginTop: -35, // hack fix
     flexDirection: 'row',
     alignItems: 'center',
   },

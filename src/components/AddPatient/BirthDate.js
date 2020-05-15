@@ -5,6 +5,7 @@ import {setNextField, setPreviousField} from '../../store/actions/field';
 import {setPatientData} from '../../store/actions/patient';
 import {useSelector, useDispatch} from 'react-redux';
 import {blue} from '../Common/commonStyles';
+import FormSubTitle from '../Common/FormSubTitle';
 
 const BirthDate = ({type}) => {
   const {field} = useSelector(state => state);
@@ -24,6 +25,7 @@ const BirthDate = ({type}) => {
 
   return (
     <InputLayout prev={handlePrev} next={handleNext}>
+      <FormSubTitle title1={type} />
       <DatePicker
         style={dateContainerStyle}
         placeholder={type}
