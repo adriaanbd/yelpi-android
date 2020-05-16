@@ -26,7 +26,7 @@ export default (state = 'nome', action) => {
     case SET_NEXT_FIELD:
       index = fields.indexOf(state);
       const nextIndex = index + 1;
-      return fields[nextIndex];
+      return nextIndex === fields.length ? fields[0] : fields[nextIndex];
     default:
       return state;
   }
