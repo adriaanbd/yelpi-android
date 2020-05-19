@@ -6,9 +6,11 @@ import {setPatientData} from '../../store/actions/patient';
 import InputLayout from './InputLayout';
 import {StyleSheet} from 'react-native';
 import {navigate} from '../../utils/navigationRef';
+import {titleCase} from '../../utils/helpers';
+import FormSubTitle from '../Common/FormSubTitle';
 
 const SliderInput = ({type, tail}) => {
-  const {field} = useSelector(state => state);
+  const {field, patient} = useSelector(state => state);
   const [sliderValue, setSliderValue] = useState(50);
   const dispatch = useDispatch();
 
@@ -28,6 +30,10 @@ const SliderInput = ({type, tail}) => {
 
   return (
     <InputLayout prev={handlePrev} next={handleNext}>
+      <FormSubTitle
+        title1={`A ${type}`}
+        title2={`do ${titleCase(patient.nome)} está`}
+      />
       <Slider
         style={styles.slider}
         minimumValue={0}

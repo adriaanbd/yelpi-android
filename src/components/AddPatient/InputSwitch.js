@@ -36,16 +36,16 @@ const InputSwitch = () => {
       component = <MentalState type="Mental State" />;
       break;
     case 'mentalHealth':
-      component = <SliderInput type="Mental Health" />;
+      component = <SliderInput type="saúde mental" />;
       break;
     case 'physicalHealth':
-      component = <SliderInput type="Physical Health" />;
+      component = <SliderInput type="saúde física" />;
       break;
     case 'locomotion':
-      component = <SliderInput type="Locomotion" />;
+      component = <SliderInput type="locomoção" />;
       break;
     case 'generalHealth':
-      component = <SliderInput type="General Health" tail={true} />;
+      component = <SliderInput type="saudade" tail={true} />;
       break;
     default:
       component = <TextInput type="Nome" />;

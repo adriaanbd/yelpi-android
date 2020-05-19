@@ -4,6 +4,7 @@ import {CheckBox} from 'react-native-elements';
 import {useDispatch, useSelector} from 'react-redux';
 import {setNextField, setPreviousField} from '../../store/actions/field';
 import {setPatientData} from '../../store/actions/patient';
+import {titleCase} from '../../utils/helpers';
 
 import {
   checkboxContainerStyle,
@@ -12,8 +13,6 @@ import {
 } from '../Common/commonStyles';
 import FormSubTitle from '../Common/FormSubTitle';
 import InputLayout from './InputLayout';
-
-const titleCase = str => `${str[0].toUpperCase()}${str.slice(1)}`;
 
 const MentalState = () => {
   const {field} = useSelector(state => state);
