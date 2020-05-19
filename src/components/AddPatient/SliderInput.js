@@ -21,11 +21,9 @@ const SliderInput = ({type, tail}) => {
     patientData[field] = sliderValue;
     dispatch(setPatientData(patientData));
     if (tail) {
-      dispatch(setNextField());
       navigate('PatientFormScreen');
-    } else {
-      dispatch(setNextField());
     }
+    dispatch(setNextField());
   };
 
   return (
