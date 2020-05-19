@@ -17,9 +17,12 @@ const checkIfTokenExp = decoded => {
 };
 
 export const setAuthToken = token => {
-  if (token && checkIfTokenExp(decode(token))) {
+  const expired = checkIfTokenExp(decode(token));
+  if (token && expired) {
+    console.log('inside the IF', expired);
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
   } else {
+    console.log('inside the ELSE', expired);
     delete axios.defaults.headers.common.Authorization;
   }
 };
