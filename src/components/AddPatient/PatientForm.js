@@ -5,6 +5,8 @@ import {useSelector, useDispatch} from 'react-redux';
 import Spacer from '../Spacer';
 import {setPatientData} from '../../store/actions/patient';
 import {createPatient} from '../../store/thunks/patient';
+import FormTitle from '../Common/FormTitle';
+import StatusBar from './StatusBar';
 
 const PatientForm = () => {
   const {patient} = useSelector(state => state);
@@ -24,6 +26,10 @@ const PatientForm = () => {
 
   return (
     <View style={styles.container}>
+      <View style={styles.statusBar}>
+        <StatusBar />
+      </View>
+      <FormTitle title1="Revisar novo" title2="paciente" />
       <View style={styles.twoCols}>
         <TouchableOpacity style={styles.halfCol}>
           <Input
@@ -123,6 +129,9 @@ const PatientForm = () => {
 };
 
 const styles = StyleSheet.create({
+  statusBar: {
+    alignSelf: 'center',
+  },
   container: {
     height: '100%',
   },
