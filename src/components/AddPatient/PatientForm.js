@@ -7,7 +7,7 @@ import {setPatientData} from '../../store/actions/patient';
 import {createPatient} from '../../store/thunks/patient';
 import FormTitle from '../Common/FormTitle';
 import StatusBar from './StatusBar';
-import { blue } from '../Common/commonStyles';
+import {blue, fontFamily} from '../Common/commonStyles';
 
 const PatientForm = () => {
   const {patient} = useSelector(state => state);
@@ -41,6 +41,8 @@ const PatientForm = () => {
             onSubmitEditing={() => dispatch(setPatientData({...patient, name}))}
             inputContainerStyle={inputContainerStyle}
             inputStyle={inputStyle}
+            underlineColorAndroid="transparent"
+            placeholderTextColor="black"
           />
         </TouchableOpacity>
         <TouchableOpacity style={styles.halfCol}>
@@ -51,6 +53,8 @@ const PatientForm = () => {
             onSubmitEditing={() => dispatch(setPatientData({...patient, name}))}
             inputContainerStyle={inputContainerStyle}
             inputStyle={inputStyle}
+            underlineColorAndroid="transparent"
+            placeholderTextColor="black"
           />
         </TouchableOpacity>
       </View>
@@ -63,6 +67,8 @@ const PatientForm = () => {
             onSubmitEditing={() => dispatch(setPatientData({...patient, age}))}
             inputContainerStyle={inputContainerStyle}
             inputStyle={inputStyle}
+            underlineColorAndroid="transparent"
+            placeholderTextColor="black"
           />
         </TouchableOpacity>
         <TouchableOpacity style={styles.halfCol}>
@@ -75,6 +81,8 @@ const PatientForm = () => {
             }
             inputContainerStyle={inputContainerStyle}
             inputStyle={inputStyle}
+            underlineColorAndroid="transparent"
+            placeholderTextColor="black"
           />
         </TouchableOpacity>
       </View>
@@ -86,6 +94,8 @@ const PatientForm = () => {
             onChangeText={setGender}
             inputContainerStyle={inputContainerStyle}
             inputStyle={inputStyle}
+            underlineColorAndroid="transparent"
+            placeholderTextColor="black"
           />
         </TouchableOpacity>
         <TouchableOpacity style={styles.halfCol}>
@@ -95,6 +105,8 @@ const PatientForm = () => {
             onChangeText={setMentalState}
             inputContainerStyle={inputContainerStyle}
             inputStyle={inputStyle}
+            underlineColorAndroid="transparent"
+            placeholderTextColor="black"
           />
         </TouchableOpacity>
       </View>
@@ -105,6 +117,7 @@ const PatientForm = () => {
           onChangeText={setRelationship}
           inputContainerStyle={inputContainerStyle}
           inputStyle={inputStyle}
+          placeholderTextColor="black"
         />
       </TouchableOpacity>
       <TouchableOpacity>
@@ -114,6 +127,8 @@ const PatientForm = () => {
           onChangeText={setMentalHealth}
           inputContainerStyle={inputContainerStyle}
           inputStyle={inputStyle}
+          underlineColorAndroid="transparent"
+          placeholderTextColor="black"
         />
       </TouchableOpacity>
       <TouchableOpacity>
@@ -123,6 +138,8 @@ const PatientForm = () => {
           onChangeText={setPhysicalHealth}
           inputContainerStyle={inputContainerStyle}
           inputStyle={inputStyle}
+          underlineColorAndroid="transparent"
+          placeholderTextColor="black"
         />
       </TouchableOpacity>
       <TouchableOpacity>
@@ -132,6 +149,8 @@ const PatientForm = () => {
           onChangeText={setLocomotion}
           inputContainerStyle={inputContainerStyle}
           inputStyle={inputStyle}
+          underlineColorAndroid="transparent"
+          placeholderTextColor="black"
         />
       </TouchableOpacity>
       <TouchableOpacity>
@@ -141,9 +160,11 @@ const PatientForm = () => {
           onChangeText={setGeneralHealth}
           inputContainerStyle={inputContainerStyle}
           inputStyle={inputStyle}
+          underlineColorAndroid="transparent"
+          placeholderTextColor="black"
         />
       </TouchableOpacity>
-      <Spacer />
+      <Spacer space={16} />
       <Button
         title="CONFIRMAR"
         onPress={() => dispatch(createPatient(patient))}
@@ -156,21 +177,23 @@ const PatientForm = () => {
 };
 
 const inputContainerStyle = {
-  borderWidth: 1,
-  borderColor: blue,
-  height: 38,
-  marginVertical: 5,
+  height: 16,
+  marginVertical: 16,
+  borderBottomWidth: 0,
 };
 
 const inputStyle = {
+  borderWidth: 1,
   textAlign: 'center',
+  borderColor: blue,
+  padding: 0,
+  fontFamily: fontFamily,
+  lineHeight: 24,
+  fontWeight: '300',
+  fontStyle: 'normal',
 };
 
 const styles = StyleSheet.create({
-  inputField: {
-    borderWidth: 1,
-    height: 38,
-  },
   statusBar: {
     alignSelf: 'center',
   },
