@@ -7,6 +7,7 @@ import {setPatientData} from '../../store/actions/patient';
 import {createPatient} from '../../store/thunks/patient';
 import FormTitle from '../Common/FormTitle';
 import StatusBar from './StatusBar';
+import { blue } from '../Common/commonStyles';
 
 const PatientForm = () => {
   const {patient} = useSelector(state => state);
@@ -30,6 +31,7 @@ const PatientForm = () => {
         <StatusBar />
       </View>
       <FormTitle title1="Revisar novo" title2="paciente" />
+      <Spacer space={15} />
       <View style={styles.twoCols}>
         <TouchableOpacity style={styles.halfCol}>
           <Input
@@ -37,6 +39,8 @@ const PatientForm = () => {
             value={name}
             onChangeText={setName}
             onSubmitEditing={() => dispatch(setPatientData({...patient, name}))}
+            inputContainerStyle={inputContainerStyle}
+            inputStyle={inputStyle}
           />
         </TouchableOpacity>
         <TouchableOpacity style={styles.halfCol}>
@@ -45,6 +49,8 @@ const PatientForm = () => {
             value={lastname}
             onChangeText={setLastName}
             onSubmitEditing={() => dispatch(setPatientData({...patient, name}))}
+            inputContainerStyle={inputContainerStyle}
+            inputStyle={inputStyle}
           />
         </TouchableOpacity>
       </View>
@@ -55,6 +61,8 @@ const PatientForm = () => {
             value={age}
             onChangeText={setAge}
             onSubmitEditing={() => dispatch(setPatientData({...patient, age}))}
+            inputContainerStyle={inputContainerStyle}
+            inputStyle={inputStyle}
           />
         </TouchableOpacity>
         <TouchableOpacity style={styles.halfCol}>
@@ -65,6 +73,8 @@ const PatientForm = () => {
             onSubmitEditing={() =>
               dispatch(setPatientData({...patient, weight}))
             }
+            inputContainerStyle={inputContainerStyle}
+            inputStyle={inputStyle}
           />
         </TouchableOpacity>
       </View>
@@ -74,6 +84,8 @@ const PatientForm = () => {
             placeholder={patient.gender}
             value={gender}
             onChangeText={setGender}
+            inputContainerStyle={inputContainerStyle}
+            inputStyle={inputStyle}
           />
         </TouchableOpacity>
         <TouchableOpacity style={styles.halfCol}>
@@ -81,6 +93,8 @@ const PatientForm = () => {
             placeholder={String(patient.mentalState)}
             value={mentalState}
             onChangeText={setMentalState}
+            inputContainerStyle={inputContainerStyle}
+            inputStyle={inputStyle}
           />
         </TouchableOpacity>
       </View>
@@ -89,6 +103,8 @@ const PatientForm = () => {
           placeholder={String(patient.relationship)}
           value={relationship}
           onChangeText={setRelationship}
+          inputContainerStyle={inputContainerStyle}
+          inputStyle={inputStyle}
         />
       </TouchableOpacity>
       <TouchableOpacity>
@@ -96,6 +112,8 @@ const PatientForm = () => {
           placeholder={String(patient.mentalHealth)}
           value={mentalHealth}
           onChangeText={setMentalHealth}
+          inputContainerStyle={inputContainerStyle}
+          inputStyle={inputStyle}
         />
       </TouchableOpacity>
       <TouchableOpacity>
@@ -103,6 +121,8 @@ const PatientForm = () => {
           placeholder={String(patient.physicalHealth)}
           value={physicalHealth}
           onChangeText={setPhysicalHealth}
+          inputContainerStyle={inputContainerStyle}
+          inputStyle={inputStyle}
         />
       </TouchableOpacity>
       <TouchableOpacity>
@@ -110,6 +130,8 @@ const PatientForm = () => {
           placeholder={String(patient.locomotion)}
           value={locomotion}
           onChangeText={setLocomotion}
+          inputContainerStyle={inputContainerStyle}
+          inputStyle={inputStyle}
         />
       </TouchableOpacity>
       <TouchableOpacity>
@@ -117,29 +139,60 @@ const PatientForm = () => {
           placeholder={String(patient.generalHealth)}
           value={generalHealth}
           onChangeText={setGeneralHealth}
+          inputContainerStyle={inputContainerStyle}
+          inputStyle={inputStyle}
         />
       </TouchableOpacity>
       <Spacer />
       <Button
         title="CONFIRMAR"
         onPress={() => dispatch(createPatient(patient))}
+        titleStyle={styles.loginTitle}
+        containerStyle={styles.container}
+        buttonStyle={styles.login}
       />
     </View>
   );
 };
 
+const inputContainerStyle = {
+  borderWidth: 1,
+  borderColor: blue,
+  height: 38,
+  marginVertical: 5,
+};
+
+const inputStyle = {
+  textAlign: 'center',
+};
+
 const styles = StyleSheet.create({
+  inputField: {
+    borderWidth: 1,
+    height: 38,
+  },
   statusBar: {
     alignSelf: 'center',
   },
   container: {
     height: '100%',
+    paddingHorizontal: 30,
   },
   twoCols: {
     flexDirection: 'row',
   },
   halfCol: {
     width: '50%',
+  },
+  login: {
+    borderRadius: 38,
+    width: 300,
+    height: 58,
+    marginBottom: 14,
+    borderStyle: 'solid',
+    borderWidth: 3,
+    backgroundColor: '#245796',
+    borderColor: '#245796',
   },
 });
 
