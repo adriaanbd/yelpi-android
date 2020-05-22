@@ -1,6 +1,6 @@
 import {SET_PREV_FIELD, SET_NEXT_FIELD} from '../actions/types';
 
-const fields = [
+export const fields = [
   'nome',
   'sobrenome',
   'birthdate',
