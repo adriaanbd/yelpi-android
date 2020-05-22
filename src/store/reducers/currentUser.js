@@ -1,6 +1,6 @@
 import {SET_CURRENT_USER} from '../actions/types';
 
-const initialState = {
+export const initialState = {
   authenticated: false,
   data: null,
 };
