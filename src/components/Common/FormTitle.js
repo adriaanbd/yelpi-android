@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 45,
-    lineHeight: 55,
+    lineHeight: 48,
     color: '#245796',
     fontFamily: 'Montserrat',
   },

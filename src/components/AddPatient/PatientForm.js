@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {View, StyleSheet, TouchableOpacity} from 'react-native';
-import {Input, Button} from 'react-native-elements';
+import {Input, Button, Card, Text} from 'react-native-elements';
 import {useSelector, useDispatch} from 'react-redux';
 import Spacer from '../Spacer';
 import {setPatientData} from '../../store/actions/patient';
@@ -8,6 +8,8 @@ import {createPatient} from '../../store/thunks/patient';
 import FormTitle from '../Common/FormTitle';
 import StatusBar from './StatusBar';
 import {blue, fontFamily} from '../Common/commonStyles';
+import Slider from '@react-native-community/slider';
+import {titleCase} from '../../utils/helpers';
 
 const PatientForm = () => {
   const {patient} = useSelector(state => state);
@@ -17,11 +19,7 @@ const PatientForm = () => {
   const [weight, setWeight] = useState('');
   const [gender, setGender] = useState('');
   const [mentalState, setMentalState] = useState('');
-  const [mentalHealth, setMentalHealth] = useState('');
   const [relationship, setRelationship] = useState('');
-  const [physicalHealth, setPhysicalHealth] = useState('');
-  const [locomotion, setLocomotion] = useState('');
-  const [generalHealth, setGeneralHealth] = useState('');
 
   const dispatch = useDispatch();
 
@@ -31,7 +29,7 @@ const PatientForm = () => {
         <StatusBar />
       </View>
       <FormTitle title1="Revisar novo" title2="paciente" />
-      <Spacer space={15} />
+      <Spacer space={8} />
       <View style={styles.twoCols}>
         <TouchableOpacity style={styles.halfCol}>
           <Input
@@ -120,51 +118,40 @@ const PatientForm = () => {
           placeholderTextColor="black"
         />
       </TouchableOpacity>
-      <TouchableOpacity>
-        <Input
-          placeholder={String(patient.mentalHealth)}
-          value={mentalHealth}
-          onChangeText={setMentalHealth}
-          inputContainerStyle={inputContainerStyle}
-          inputStyle={inputStyle}
-          underlineColorAndroid="transparent"
-          placeholderTextColor="black"
+      <Card containerStyle={card.container}>
+        <View style={card.headerContainer}>
+          <Text style={card.headerText}>O estado de saúde de</Text>
+          <Text style={card.headerText}>{`${titleCase(
+            patient.nome,
+          )} está:`}</Text>
+        </View>
+        <Slider
+          minimumValue={0}
+          maximumValue={100}
+          minimumTrackTintColor="#000000"
+          maximumTrackTintColor="#000000"
+          value={patient.generalHealth}
+          disabled
         />
-      </TouchableOpacity>
-      <TouchableOpacity>
-        <Input
-          placeholder={String(patient.physicalHealth)}
-          value={physicalHealth}
-          onChangeText={setPhysicalHealth}
-          inputContainerStyle={inputContainerStyle}
-          inputStyle={inputStyle}
-          underlineColorAndroid="transparent"
-          placeholderTextColor="black"
-        />
-      </TouchableOpacity>
-      <TouchableOpacity>
-        <Input
-          placeholder={String(patient.locomotion)}
-          value={locomotion}
-          onChangeText={setLocomotion}
-          inputContainerStyle={inputContainerStyle}
-          inputStyle={inputStyle}
-          underlineColorAndroid="transparent"
-          placeholderTextColor="black"
-        />
-      </TouchableOpacity>
-      <TouchableOpacity>
-        <Input
-          placeholder={String(patient.generalHealth)}
-          value={generalHealth}
-          onChangeText={setGeneralHealth}
-          inputContainerStyle={inputContainerStyle}
-          inputStyle={inputStyle}
-          underlineColorAndroid="transparent"
-          placeholderTextColor="black"
-        />
-      </TouchableOpacity>
-      <Spacer space={16} />
+        <View style={card.footer}>
+          <Text>Ruim</Text>
+          <Text>Boa</Text>
+        </View>
+      </Card>
+      <Spacer space={4} />
+      <Card containerStyle={card.container}>
+        <View style={card.headerContainer}>
+          <Text style={card.headerText}>{`${titleCase(
+            patient.nome,
+          )} frequenta:`}</Text>
+        </View>
+        <View style={card.physiciansContainer}>
+          {patient.physicians.map(p => (
+            <Text style={card.physicians}>{`${p}`}</Text>
+          ))}
+        </View>
+      </Card>
+      <Spacer space={8} />
       <Button
         title="CONFIRMAR"
         onPress={() => dispatch(createPatient(patient))}
@@ -191,6 +178,44 @@ const inputStyle = {
   lineHeight: 24,
   fontWeight: '300',
   fontStyle: 'normal',
+  fontSize: 20,
+};
+
+const card = {
+  container: {
+    height: 112,
+    borderWidth: 1,
+    borderColor: blue,
+    marginVertical: 4,
+    marginHorizontal: 10,
+    padding: 0,
+    justifyContent: 'center',
+  },
+  headerContainer: {
+    alignItems: 'center',
+    marginVertical: 4,
+  },
+  headerText: {
+    fontFamily: fontFamily,
+    fontSize: 20,
+  },
+  physiciansContainer: {
+    flexWrap: 'wrap',
+    height: 78,
+  },
+  physicians: {
+    paddingHorizontal: 24,
+    fontSize: 18,
+    color: blue,
+    fontWeight: '300',
+    fontStyle: 'normal',
+    fontFamily: fontFamily,
+  },
+  footer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingHorizontal: 16,
+  },
 };
 
 const styles = StyleSheet.create({

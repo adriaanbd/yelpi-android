@@ -7,7 +7,7 @@ const StatusBar = () => {
     <>
       <Spacer />
       <Text>Status Bar Goes Here</Text>
-      <Spacer space={5} />
+      <Spacer space={8} />
     </>
   );
 };
