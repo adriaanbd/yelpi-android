@@ -29,7 +29,7 @@ const PatientForm = () => {
         <StatusBar />
       </View>
       <FormTitle title1="Revisar novo" title2="paciente" />
-      <Spacer space={8} />
+      <Spacer space={4} />
       <View style={styles.twoCols}>
         <TouchableOpacity style={styles.halfCol}>
           <Input
@@ -151,7 +151,7 @@ const PatientForm = () => {
           ))}
         </View>
       </Card>
-      <Spacer space={8} />
+      <Spacer space={12} />
       <Button
         title="CONFIRMAR"
         onPress={() => dispatch(createPatient(patient))}
