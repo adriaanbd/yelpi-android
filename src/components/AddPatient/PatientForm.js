@@ -10,6 +10,9 @@ import StatusBar from './StatusBar';
 import {blue, fontFamily} from '../Common/commonStyles';
 import Slider from '@react-native-community/slider';
 import {titleCase} from '../../utils/helpers';
+import Modal, {ModalTitle} from 'react-native-modals';
+import ModalContent from 'react-native-modals/dist/components/ModalContent';
+import TextInput from './TextInput';
 
 const PatientForm = () => {
   const {patient} = useSelector(state => state);
@@ -20,6 +23,7 @@ const PatientForm = () => {
   const [gender, setGender] = useState('');
   const [mentalState, setMentalState] = useState('');
   const [relationship, setRelationship] = useState('');
+  const [visible, setVisible] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -31,12 +35,22 @@ const PatientForm = () => {
       <FormTitle title1="Revisar novo" title2="paciente" />
       <Spacer space={4} />
       <View style={styles.twoCols}>
-        <TouchableOpacity style={styles.halfCol}>
+        <TouchableOpacity
+          style={styles.halfCol}
+          onPress={() => setVisible(true)}>
+          <Modal
+            visible={visible}
+            modalTitle={<ModalTitle title="Modal title" />}
+            onTouchOutside={() => setVisible(false)}>
+            <ModalContent style={{height: 250, width: 300}} >
+              <Text>{"Hello"}</Text>
+            </ModalContent>
+          </Modal>
           <Input
             placeholder={patient.nome}
             value={name}
-            onChangeText={setName}
-            onSubmitEditing={() => dispatch(setPatientData({...patient, name}))}
+            // onChangeText={setName}
+            // onSubmitEditing={() => dispatch(setPatientData({...patient, name}))}
             inputContainerStyle={inputContainerStyle}
             inputStyle={inputStyle}
             underlineColorAndroid="transparent"
