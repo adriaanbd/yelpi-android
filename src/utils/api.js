@@ -2,7 +2,8 @@ import axios from 'axios';
 import decode from 'jwt-decode';
 import moment from 'moment';
 
-const baseUrl = 'https://mighty-ocean-68056.herokuapp.com';
+
+const baseUrl = "http://f3143022531f.ngrok.io";
 
 export const sendRequest = async (method, path, data) => {
   const url = `${baseUrl}/${path}`;

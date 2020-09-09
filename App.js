@@ -14,6 +14,7 @@ import PatientFormScreen from './src/screens/PatientFormScreen';
 import {setNavigator} from './src/utils/navigationRef';
 import {createStackNavigator} from 'react-navigation-stack';
 
+// const Welcome = 
 const switchNavigator = createSwitchNavigator({
   InitFlow: createSwitchNavigator({
     ResolveStartScreen,
@@ -51,9 +52,11 @@ const switchNavigator = createSwitchNavigator({
       },
     }),
   }),
-  HomeScreen,
-  AddNewPatientScreen,
-  PatientFormScreen,
+  HomeScreen:createStackNavigator({
+    Home: {screen: HomeScreen},
+    AddNewPatientScreen: {screen: AddNewPatientScreen},
+    PatientFormScreen: {screen: PatientFormScreen},
+  }),
 });
 
 const store = configureStore();
