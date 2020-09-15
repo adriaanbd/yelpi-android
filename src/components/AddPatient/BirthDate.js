@@ -16,13 +16,13 @@ const BirthDate = ({type}) => {
   const dispatch = useDispatch();
 
   const handlePrev = () => {
-    dispatch(setPreviousField());
+    dispatch(setPreviousField('patientFields'));
   };
 
   const handleNext = () => {
     const patientData = {};
     patientData[field] = date;
-    dispatch(setNextField());
+    dispatch(setNextField('patientFields'));
     dispatch(setPatientData(patientData));
   };
 

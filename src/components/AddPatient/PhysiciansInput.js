@@ -30,13 +30,13 @@ const PhysiciansInput = ({type}) => {
   const dispatch = useDispatch();
 
   const handlePrev = () => {
-    dispatch(setPreviousField());
+    dispatch(setPreviousField('patientFields'));
   };
 
   const handleNext = () => {
     const patientData = {};
     patientData[field] = physicians;
-    dispatch(setNextField());
+    dispatch(setNextField('patientFields'));
     dispatch(setPatientData(patientData));
   };
 

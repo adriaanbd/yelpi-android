@@ -15,7 +15,7 @@ const SliderInput = ({type, tail}) => {
   const dispatch = useDispatch();
 
   const handlePrev = () => {
-    dispatch(setPreviousField());
+    dispatch(setPreviousField('patientFields'));
   };
 
   const handleNext = () => {
@@ -25,7 +25,7 @@ const SliderInput = ({type, tail}) => {
     if (tail) {
       navigate('PatientFormScreen');
     }
-    dispatch(setNextField());
+    dispatch(setNextField('patientFields'));
   };
 
   return (

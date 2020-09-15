@@ -15,19 +15,21 @@ import {
 
 const GenderInput = () => {
   const {field} = useSelector(state => state);
+  const stati = useSelector(state => state);
   const [male, setMale] = useState(false);
   const [female, setFemale] = useState(false);
   const [gender, setGender] = useState('');
   const dispatch = useDispatch();
 
+  console.log(stati)
   const handlePrev = () => {
-    dispatch(setPreviousField());
+    dispatch(setPreviousField('patientFields'));
   };
 
   const handleNext = () => {
     const patientData = {};
     patientData[field] = gender;
-    dispatch(setNextField());
+    dispatch(setNextField('patientFields'));
     dispatch(setPatientData(patientData));
   };
 

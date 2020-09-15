@@ -6,7 +6,7 @@ const StatusBar = () => {
   return (
     <>
       <Spacer />
-      <Text>Status Bar Goes Here</Text>
+      <Text>Staus bar</Text>
       <Spacer space={8} />
     </>
   );

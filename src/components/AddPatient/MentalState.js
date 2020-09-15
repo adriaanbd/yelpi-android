@@ -23,13 +23,13 @@ const MentalState = () => {
   const dispatch = useDispatch();
 
   const handlePrev = () => {
-    dispatch(setPreviousField());
+    dispatch(setPreviousField('patientFields'));
   };
 
   const handleNext = () => {
     const patientData = {};
     patientData[field] = mentalState;
-    dispatch(setNextField());
+    dispatch(setNextField('patientFields'));
     dispatch(setPatientData(patientData));
   };
 
