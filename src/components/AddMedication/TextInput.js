@@ -13,13 +13,13 @@ const TextInput = ({type}) => {
   const dispatch = useDispatch();
 
   const handlePrev = () => {
-    dispatch(setPreviousField('patientFields'));
+    dispatch(setPreviousField('medicationsFields'));
   };
 
   const handleNext = () => {
     const patientData = {};
     patientData[field] = text;
-    dispatch(setNextField('patientFields'));
+    dispatch(setNextField('medicationsFields'));
     dispatch(setPatientData(patientData));
   };
 

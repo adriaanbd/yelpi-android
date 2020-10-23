@@ -3,39 +3,37 @@ import {StyleSheet} from 'react-native';
 import {Picker} from '@react-native-community/picker';
 import {useDispatch, useSelector} from 'react-redux';
 import {setNextField, setPreviousField} from '../../store/actions/field';
-import {setPatientData} from '../../store/actions/patient';
+import {setPatientMedication} from '../../store/actions/patient';
 import InputLayout from './InputLayout';
 
-const titleCase = str => `${str[0].toUpperCase()}${str.slice(1)}`;
 
-const RelationshipInput = ({type}) => {
-  const {nome} = useSelector(state => state.patient);
-  const [relationship, setRelationship] = useState('');
+const FrequencyInput = ({type}) => {
+  const [frequency, setFrequency] = useState('');
   const {field} = useSelector(state => state);
   const dispatch = useDispatch();
 
   const handlePrev = () => {
-    dispatch(setPreviousField('patientFields'));
+    dispatch(setPreviousField('medicationsFields'));
   };
 
   const handleNext = () => {
-    const patientData = {};
-    patientData[field] = relationship;
-    dispatch(setNextField('patientFields'));
-    dispatch(setPatientData(patientData));
+    const patientMedication = {};
+    patientMedication[field] = frequency;
+    dispatch(setNextField('medicationsFields'));
+    dispatch(setPatientMedication(patientMedication));
   };
 
   const relValues = [
-    `O ${titleCase(nome)} é meu pai`,
-    `O ${titleCase(nome)} é meu irmao`,
-    `O ${titleCase(nome)} sou eu`,
+    '4h em 4h',
+    '8h em 8h',
+    '12h em 12h',
   ];
 
   return (
     <InputLayout prev={handlePrev} next={handleNext}>
       <Picker
-        selectedValue={relationship}
-        onValueChange={setRelationship}
+        selectedValue={frequency}
+        onValueChange={setFrequency}
         mode="dropdown"
         style={styles.selectBox}>
         <Picker.Item label={type} value="" />

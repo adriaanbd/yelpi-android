@@ -1,32 +1,39 @@
 import {SET_PREV_FIELD, SET_NEXT_FIELD} from '../actions/types';
 
-const fields = [
-  'nome',
-  'sobrenome',
-  'birthdate',
-  'gender',
-  'relationship',
-  'physicians',
-  'weight',
-  'mentalState',
-  'mentalHealth',
-  'physicalHealth',
-  'locomotion',
-  'generalHealth',
-];
+const fields = {
+  patientFields: [
+    'nome',
+    'sobrenome',
+    'birthdate',
+    'gender',
+    'relationship',
+    'physicians',
+    'weight',
+    'mentalState',
+    'mentalHealth',
+    'physicalHealth',
+    'locomotion',
+    'generalHealth',
+  ],
+  medicationsFields: ['name', 'frequency', 'duration', 'time'],
+};
 
 export default (state = 'nome', action) => {
   const {type} = action;
   let index;
+  const fieldsType = action.fieldsType;
   switch (type) {
     case SET_PREV_FIELD:
-      index = fields.indexOf(state);
+      index = fields[fieldsType].indexOf(state);
       const prevIndex = index - 1;
-      return fields[prevIndex];
+      return fields[fieldsType][prevIndex];
     case SET_NEXT_FIELD:
-      index = fields.indexOf(state);
+      console.log('FIELDS LIST', fieldsType, fields[fieldsType]);
+      index = fields[fieldsType].indexOf(state);
       const nextIndex = index + 1;
-      return nextIndex === fields.length ? fields[0] : fields[nextIndex];
+      return nextIndex === fields[fieldsType].length
+        ? fields[fieldsType][0]
+        : fields[fieldsType][nextIndex];
     default:
       return state;
   }
